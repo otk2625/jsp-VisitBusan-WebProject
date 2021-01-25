@@ -7,7 +7,7 @@
 .login-body{
     margin: 0;
     padding: 0;
-    background:#156DA9;
+    background:#ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,6 +93,15 @@ border-color:#6fd653;
     color: #6FD653;
 }
 </Style>
+
+<div class="outer">
+
+	<div class="jb-text">
+		<p style="font-size: xx-large;  color: white;">부산에 가면</p>
+	</div>
+</div>
+
+<hr>
 
 <div class="login-body">
 <div class="login-box">
