@@ -41,8 +41,10 @@ public class BoardController extends HttpServlet {
 		BoardService boardService = new BoardService();
 		
 		if(cmd.equals("main")) {
-			List<Item> list = boardService.뿌리기();
+			List<Item> list = boardService.뿌리기(1,12);
+			List<Item> list2 = boardService.뿌리기(5,8);
 			
+			request.setAttribute("list2", list2);
 			request.setAttribute("list", list);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("board/mainBoard2.jsp");
@@ -50,6 +52,8 @@ public class BoardController extends HttpServlet {
 			
 //			response.sendRedirect("board/mainBoard2.jsp");
 		}else if(cmd.equals("sightForm2")) {
+			
+			
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("board/sightForm2.jsp");
 			dispatcher.forward(request, response);

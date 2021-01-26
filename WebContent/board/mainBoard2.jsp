@@ -412,333 +412,63 @@ calc
 			<b>인기 부산여행</b>
 		</h1>
 		<div class="card-container">
-			<div class="card-row">
-				<div class="card-list">
-					<div class="card shadow-sm border-light">
-						<a href="#" class="position-relative"> <img
-							src="https://via.placeholder.com/500x350/5fa9f8/ffffff"
-							class="card-img-top" alt="image">
-						</a>
-						<div class="card-body">
-							<a href="#">
-								<h5 class="font-weight-normal">Coworking Workspace</h5>
+			
+				
+				<%
+					int newLine2 = 0;
+				 	int articleCount2=0;
+				 	int cnt2=0;
+				%>
+				<c:forEach var="list2" items="${list2}" varStatus="status">
+					<%
+						if(newLine2==0){
+							out.print("<div class="+"card-row"+">");
+						}
+					newLine2++;
+					articleCount2++;
+					%>
+					<div class="card-list">
+						<div class="card shadow-sm border-light">
+							<a href="#" class="position-relative"> <img
+								src="${list2.MAINIMGNORMAL }" class="card-img-top" alt="image">
 							</a>
-							<div class="post-meta">
-								<span class="small lh-120"><i
-									class="fas fa-map-marker-alt mr-2"></i>Los-Angeles, Hollywood,
-									USA</span>
-							</div>
-							<div class="d-flex my-4">
-								<i class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <span
-									class="badge badge-pill badge-secondary ml-2">5.0</span>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div class="col pl-0">
-									<span class="text-muted font-small d-block mb-2">Monthly</span>
-									<span class="h5 text-dark font-weight-bold">3500$</span>
+							<div class="card-body">
+								<a href="${list2.HOMEPAGEURL }">
+									<h5 class="font-weight-normal">${list2.MAINTITLE}</h5>
+								</a>
+								<div class="post-meta">
+									<span class="small lh-120"><i
+										class="fas fa-map-marker-alt mr-2"></i>${list2.TITLE }</span>
 								</div>
-								<div class="col">
-									<span class="text-muted font-small d-block mb-2">Seats</span> <span
-										class="h5 text-dark font-weight-bold">10</span>
-								</div>
-								<div class="col pr-0">
-									<span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span
-										class="h5 text-dark font-weight-bold">1500</span>
+								<br>
+								<div class="d-flex justify-content-between">
+									<div class="col pl-0">
+										<span class="text-muted font-small d-block mb-2">위치</span>
+										<span class="font-small text-dark font-weight-bold">${list2.GUGUNNM}</span>
+									</div>
+									<div class="col">
+										<span class="text-muted font-small d-block mb-2">이름</span>
+										<span class="font-small text-dark font-weight-bold">${list2.PLACE}</span>
+									</div>
+									
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="card-list">
-					<div class="card shadow-sm border-light">
-						<a href="#" class="position-relative"> <img
-							src="https://via.placeholder.com/500x350/5fa9f8/ffffff"
-							class="card-img-top" alt="image">
-						</a>
-						<div class="card-body">
-							<a href="#">
-								<h5 class="font-weight-normal">Coworking Workspace</h5>
-							</a>
-							<div class="post-meta">
-								<span class="small lh-120"><i
-									class="fas fa-map-marker-alt mr-2"></i>Los-Angeles, Hollywood,
-									USA</span>
-							</div>
-							<div class="d-flex my-4">
-								<i class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <span
-									class="badge badge-pill badge-secondary ml-2">5.0</span>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div class="col pl-0">
-									<span class="text-muted font-small d-block mb-2">Monthly</span>
-									<span class="h5 text-dark font-weight-bold">3500$</span>
-								</div>
-								<div class="col">
-									<span class="text-muted font-small d-block mb-2">Seats</span> <span
-										class="h5 text-dark font-weight-bold">10</span>
-								</div>
-								<div class="col pr-0">
-									<span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span
-										class="h5 text-dark font-weight-bold">1500</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card-list">
-					<div class="card shadow-sm border-light">
-						<a href="#" class="position-relative"> <img
-							src="https://via.placeholder.com/500x350/5fa9f8/ffffff"
-							class="card-img-top" alt="image">
-						</a>
-						<div class="card-body">
-							<a href="#">
-								<h5 class="font-weight-normal">Coworking Workspace</h5>
-							</a>
-							<div class="post-meta">
-								<span class="small lh-120"><i
-									class="fas fa-map-marker-alt mr-2"></i>Los-Angeles, Hollywood,
-									USA</span>
-							</div>
-							<div class="d-flex my-4">
-								<i class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <span
-									class="badge badge-pill badge-secondary ml-2">5.0</span>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div class="col pl-0">
-									<span class="text-muted font-small d-block mb-2">Monthly</span>
-									<span class="h5 text-dark font-weight-bold">3500$</span>
-								</div>
-								<div class="col">
-									<span class="text-muted font-small d-block mb-2">Seats</span> <span
-										class="h5 text-dark font-weight-bold">10</span>
-								</div>
-								<div class="col pr-0">
-									<span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span
-										class="h5 text-dark font-weight-bold">1500</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="card-list">
-					<div class="card shadow-sm border-light">
-						<a href="#" class="position-relative"> <img
-							src="https://via.placeholder.com/500x350/5fa9f8/ffffff"
-							class="card-img-top" alt="image">
-						</a>
-						<div class="card-body">
-							<a href="#">
-								<h5 class="font-weight-normal">Coworking Workspace</h5>
-							</a>
-							<div class="post-meta">
-								<span class="small lh-120"><i
-									class="fas fa-map-marker-alt mr-2"></i>Los-Angeles, Hollywood,
-									USA</span>
-							</div>
-							<div class="d-flex my-4">
-								<i class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <span
-									class="badge badge-pill badge-secondary ml-2">5.0</span>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div class="col pl-0">
-									<span class="text-muted font-small d-block mb-2">Monthly</span>
-									<span class="h5 text-dark font-weight-bold">3500$</span>
-								</div>
-								<div class="col">
-									<span class="text-muted font-small d-block mb-2">Seats</span> <span
-										class="h5 text-dark font-weight-bold">10</span>
-								</div>
-								<div class="col pr-0">
-									<span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span
-										class="h5 text-dark font-weight-bold">1500</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-			<div class="card-row">
-				<div class="card-list">
-					<div class="card shadow-sm border-light">
-						<a href="#" class="position-relative"> <img
-							src="https://via.placeholder.com/500x350/5fa9f8/ffffff"
-							class="card-img-top" alt="image">
-						</a>
-						<div class="card-body">
-							<a href="#">
-								<h5 class="font-weight-normal">Coworking Workspace</h5>
-							</a>
-							<div class="post-meta">
-								<span class="small lh-120"><i
-									class="fas fa-map-marker-alt mr-2"></i>Los-Angeles, Hollywood,
-									USA</span>
-							</div>
-							<div class="d-flex my-4">
-								<i class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <span
-									class="badge badge-pill badge-secondary ml-2">5.0</span>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div class="col pl-0">
-									<span class="text-muted font-small d-block mb-2">Monthly</span>
-									<span class="h5 text-dark font-weight-bold">3500$</span>
-								</div>
-								<div class="col">
-									<span class="text-muted font-small d-block mb-2">Seats</span> <span
-										class="h5 text-dark font-weight-bold">10</span>
-								</div>
-								<div class="col pr-0">
-									<span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span
-										class="h5 text-dark font-weight-bold">1500</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card-list">
-					<div class="card shadow-sm border-light">
-						<a href="#" class="position-relative"> <img
-							src="https://via.placeholder.com/500x350/5fa9f8/ffffff"
-							class="card-img-top" alt="image">
-						</a>
-						<div class="card-body">
-							<a href="#">
-								<h5 class="font-weight-normal">Coworking Workspace</h5>
-							</a>
-							<div class="post-meta">
-								<span class="small lh-120"><i
-									class="fas fa-map-marker-alt mr-2"></i>Los-Angeles, Hollywood,
-									USA</span>
-							</div>
-							<div class="d-flex my-4">
-								<i class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <span
-									class="badge badge-pill badge-secondary ml-2">5.0</span>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div class="col pl-0">
-									<span class="text-muted font-small d-block mb-2">Monthly</span>
-									<span class="h5 text-dark font-weight-bold">3500$</span>
-								</div>
-								<div class="col">
-									<span class="text-muted font-small d-block mb-2">Seats</span> <span
-										class="h5 text-dark font-weight-bold">10</span>
-								</div>
-								<div class="col pr-0">
-									<span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span
-										class="h5 text-dark font-weight-bold">1500</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card-list">
-					<div class="card shadow-sm border-light">
-						<a href="#" class="position-relative"> <img
-							src="https://via.placeholder.com/500x350/5fa9f8/ffffff"
-							class="card-img-top" alt="image">
-						</a>
-						<div class="card-body">
-							<a href="#">
-								<h5 class="font-weight-normal">Coworking Workspace</h5>
-							</a>
-							<div class="post-meta">
-								<span class="small lh-120"><i
-									class="fas fa-map-marker-alt mr-2"></i>Los-Angeles, Hollywood,
-									USA</span>
-							</div>
-							<div class="d-flex my-4">
-								<i class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <span
-									class="badge badge-pill badge-secondary ml-2">5.0</span>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div class="col pl-0">
-									<span class="text-muted font-small d-block mb-2">Monthly</span>
-									<span class="h5 text-dark font-weight-bold">3500$</span>
-								</div>
-								<div class="col">
-									<span class="text-muted font-small d-block mb-2">Seats</span> <span
-										class="h5 text-dark font-weight-bold">10</span>
-								</div>
-								<div class="col pr-0">
-									<span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span
-										class="h5 text-dark font-weight-bold">1500</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card-list">
-					<div class="card shadow-sm border-light">
-						<a href="#" class="position-relative"> <img
-							src="https://via.placeholder.com/500x350/5fa9f8/ffffff"
-							class="card-img-top" alt="image">
-						</a>
-						<div class="card-body">
-							<a href="#">
-								<h5 class="font-weight-normal">Coworking Workspace</h5>
-							</a>
-							<div class="post-meta">
-								<span class="small lh-120"><i
-									class="fas fa-map-marker-alt mr-2"></i>Los-Angeles, Hollywood,
-									USA</span>
-							</div>
-							<div class="d-flex my-4">
-								<i class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <i
-									class="star fas fa-star text-warning"></i> <span
-									class="badge badge-pill badge-secondary ml-2">5.0</span>
-							</div>
-							<div class="d-flex justify-content-between">
-								<div class="col pl-0">
-									<span class="text-muted font-small d-block mb-2">Monthly</span>
-									<span class="h5 text-dark font-weight-bold">3500$</span>
-								</div>
-								<div class="col">
-									<span class="text-muted font-small d-block mb-2">Seats</span> <span
-										class="h5 text-dark font-weight-bold">10</span>
-								</div>
-								<div class="col pr-0">
-									<span class="text-muted font-small d-block mb-2">Sq.Ft</span> <span
-										class="h5 text-dark font-weight-bold">1500</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+					
+					<%
+						if(newLine2==4){
+							out.print("</div>");
+							newLine2=0;
+						}
+					%>
+				
+					
+					</c:forEach>
+				
+				
 		</div>
+
 	</section>
 
 

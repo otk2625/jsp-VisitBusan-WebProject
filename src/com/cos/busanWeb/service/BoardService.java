@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 
 public class BoardService {
 
-	public List<Item> 뿌리기() throws IOException {
+	public List<Item> 뿌리기(int n, int n2) throws IOException {
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://apis.data.go.kr/6260000/AttractionService/getAttractionKr"); /* URL */
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
@@ -23,9 +23,9 @@ public class BoardService {
 																														 * Key
 																														 */
 		urlBuilder.append(
-				"&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /* ��������ȣ */
+				"&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode(""+n, "UTF-8")); /* ��������ȣ */
 		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "="
-				+ URLEncoder.encode("12", "UTF-8")); /* �� ������ ��� �� */
+				+ URLEncoder.encode(""+n2, "UTF-8")); /* �� ������ ��� �� */
 		urlBuilder.append("&" + URLEncoder.encode("resultType", "UTF-8") + "="
 				+ URLEncoder.encode("json", "UTF-8")); /* JSON������� ȣ�� �� �Ķ���� resultType=json �Է� */
 
