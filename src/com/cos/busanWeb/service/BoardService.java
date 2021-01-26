@@ -6,14 +6,23 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.cos.busanWeb.domain.sight.Item;
+import com.cos.busanWeb.domain.sight.SightDao;
 import com.cos.busanWeb.domain.sight.SightResponseDto;
+import com.cos.busanWeb.domain.sight.dto.sightDto;
 import com.google.gson.Gson;
 
 public class BoardService {
-
+	SightDao dao;
+	
+	
+	public BoardService() {
+		dao = new SightDao();
+	}
+	
 	public List<Item> 뿌리기(int n, int n2) throws IOException {
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://apis.data.go.kr/6260000/AttractionService/getAttractionKr"); /* URL */
@@ -39,7 +48,6 @@ public class BoardService {
 			while ((input = br.readLine()) != null) {
 				sb.append(input);
 			}
-			System.out.println(sb.toString());
 
 			Gson gson = new Gson();
 			SightResponseDto dto = gson.fromJson(sb.toString(), SightResponseDto.class);
@@ -53,6 +61,18 @@ public class BoardService {
 		}
 		return null;
 
+	}
+	
+	public List<sightDto> 조회수순으로뿌리기(int page) throws IOException {
+		
+		
+		return dao.findByReadCount(page);
+
+	}
+
+	public int 목록개수() {
+		
+		return dao.countAll();
 	}
 
 }

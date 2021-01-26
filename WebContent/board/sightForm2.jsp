@@ -637,12 +637,14 @@
   <div class="px-lg-5">
 
     <div class="row">
+
+    <c:forEach var="sightlist" items="${sightlist}" varStatus="status">
       <!-- Gallery item -->
       <div class="card-box col-xl-3 col-lg-4 col-md-6 mb-4">
-        <div class="bg-white rounded shadow-sm"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556294929/matthew-hamilton-351641-unsplash_zmvozs.jpg" alt="" class="img-fluid card-img-top">
+        <div class="bg-white rounded shadow-sm"><img src="${sightlist.mainImg }" alt="" class="img-fluid card-img-top">
           <div class="p-4">
-            <h5> <a href="#" class="text-dark">Red paint cup</a></h5>
-            <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <h5> <a href="#" class="text-dark">${sightlist.title }</a></h5>
+            <p class="small text-muted mb-0">${sightlist.subTitle }</p>
             <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
               <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPG</span></p>
               <div class="badge badge-danger px-3 rounded-pill font-weight-normal">New</div>
@@ -650,11 +652,67 @@
           </div>
         </div>
       </div>
+  </c:forEach>
       <!-- End -->
 
-     
-
     </div>
+    
+    <ul class="pagination justify-content-center">
+
+		<c:choose>
+
+			<c:when test="${preend eq true}">
+				<li class="page-item disabled"><a class="page-link"
+					href="javascript:void(0)">previous</a></li>
+			</c:when>
+
+			<c:otherwise>
+
+				<c:choose>
+
+					<c:when test="${searchon eq true}">
+						<li class="page-item"><a class="page-link"
+							href="/busanweb/board?cmd=sightform2&page=${param.page-1}&keyword=${param.keyword}">previous</a></li>
+					</c:when>
+
+					<c:otherwise>
+						<li class="page-item"><a class="page-link"
+							href="/busanweb/board?cmd=sightform2&page=${param.page-1}">previous</a></li>
+					</c:otherwise>
+				</c:choose>
+
+			</c:otherwise>
+		</c:choose>
+
+		<c:choose>
+			<c:when test="${nextend eq true}">
+
+				<li class="page-item disabled"><a class="page-link"
+					href="javascript:void(0)">next</a></li>
+			</c:when>
+
+			<c:otherwise>
+
+				<c:choose>
+					<c:when test="${searchon eq true}">
+
+						<li class="page-item"><a class="page-link"
+					href="/busanweb/board?cmd=sightform2&page=${param.page+1}&keyword=${param.keyword}">next</a></li>
+					</c:when>
+
+					<c:otherwise>
+
+						<li class="page-item"><a class="page-link"
+							href="/busanweb/board?cmd=sightform2&page=${param.page+1}">next</a></li>
+					</c:otherwise>
+				</c:choose>
+
+			</c:otherwise>
+		</c:choose>
+		</ul>
+    
+    
+    
     <div class="py-5 text-right"><a href="#" class="btn btn-dark px-5 py-3 text-uppercase">Show me more</a></div>
   </div>
 </div>

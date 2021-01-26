@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cos.busanWeb.domain.sight.Item;
+import com.cos.busanWeb.domain.sight.dto.sightDto;
 import com.cos.busanWeb.service.BoardService;
 
 //http://localhost:8080/blog/board
@@ -53,7 +54,19 @@ public class BoardController extends HttpServlet {
 //			response.sendRedirect("board/mainBoard2.jsp");
 		}else if(cmd.equals("sightForm2")) {
 			
+			int page = Integer.parseInt(request.getParameter("page"));
 			
+			List<sightDto> list = boardService.조회수순으로뿌리기(page);
+			int 개수 = (int) Math.ceil(boardService.목록개수() / 16);
+
+			if (page == 개수) {
+				request.setAttribute("nextEnd", true);
+			}
+
+			if (page == 0) {
+				request.setAttribute("preEnd", true);
+			}
+			request.setAttribute("sightlist", list);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("board/sightForm2.jsp");
 			dispatcher.forward(request, response);

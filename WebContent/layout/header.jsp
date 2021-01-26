@@ -366,7 +366,7 @@ nav {
 					data-toggle="dropdown"> <b>부산에가면</b>
 				</a>
 					<div class="dropdown-menu sm-menu">
-						<a class="dropdown-item" href="<%=request.getContextPath()%>/board?cmd=sightForm2">명소</a> <a
+						<a class="dropdown-item" href="<%=request.getContextPath()%>/board?cmd=sightForm2&page=0">명소</a> <a
 							class="dropdown-item" href="#">음식</a> <a
 							class="dropdown-item" href="#">숙박</a> <a
 							class="dropdown-item" href="#">쇼핑</a> <a
