@@ -45,7 +45,7 @@ public class SightDao {
 			return null;
 		}
 		public int countAll() {
-			String sql = "SELECT * from sight ";
+			String sql = "SELECT count(*) from sight ";
 			Connection conn = DB.getConnection();
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -54,13 +54,14 @@ public class SightDao {
 				pstmt = conn.prepareStatement(sql);
 				rs =  pstmt.executeQuery();
 
-				rs.last();
-				int a = rs.getRow();
+	
+				if(rs.next()){
+					return rs.getInt(1);
+				}
 				
 				//if(rs.next){return rs.getInt(1); => 개수 뽑아내기}
 			
-			
-				return a;
+		
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally { // 무조건 실행

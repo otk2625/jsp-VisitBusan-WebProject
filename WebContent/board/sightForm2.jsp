@@ -657,27 +657,27 @@
 
     </div>
     
-    <ul class="pagination justify-content-center">
+   <ul class="pagination justify-content-center">
 
 		<c:choose>
 
-			<c:when test="${preend eq true}">
+			<c:when test="${preEnd eq true}">
 				<li class="page-item disabled"><a class="page-link"
-					href="javascript:void(0)">previous</a></li>
+					href="javascript:void(0)">Previous</a></li>
 			</c:when>
 
 			<c:otherwise>
 
 				<c:choose>
 
-					<c:when test="${searchon eq true}">
+					<c:when test="${searchOn eq true}">
 						<li class="page-item"><a class="page-link"
-							href="/busanweb/board?cmd=sightform2&page=${param.page-1}&keyword=${param.keyword}">previous</a></li>
+							href="/busanWeb/board?cmd=sightForm2&page=${param.page-1}&keyword=${param.keyword}">Previous</a></li>
 					</c:when>
 
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"
-							href="/busanweb/board?cmd=sightform2&page=${param.page-1}">previous</a></li>
+							href="/busanWeb/board?cmd=sightForm2&page=${param.page-1}">Previous</a></li>
 					</c:otherwise>
 				</c:choose>
 
@@ -685,25 +685,25 @@
 		</c:choose>
 
 		<c:choose>
-			<c:when test="${nextend eq true}">
+			<c:when test="${nextEnd eq true}">
 
 				<li class="page-item disabled"><a class="page-link"
-					href="javascript:void(0)">next</a></li>
+					href="javascript:void(0)">Next</a></li>
 			</c:when>
 
 			<c:otherwise>
 
 				<c:choose>
-					<c:when test="${searchon eq true}">
+					<c:when test="${searchOn eq true}">
 
 						<li class="page-item"><a class="page-link"
-					href="/busanweb/board?cmd=sightform2&page=${param.page+1}&keyword=${param.keyword}">next</a></li>
+					href="/busanWeb/board?cmd=sightForm2&page=${param.page+1}&keyword=${param.keyword}">Next</a></li>
 					</c:when>
 
 					<c:otherwise>
 
 						<li class="page-item"><a class="page-link"
-							href="/busanweb/board?cmd=sightform2&page=${param.page+1}">next</a></li>
+							href="/busanWeb/board?cmd=sightForm2&page=${param.page+1}">Next</a></li>
 					</c:otherwise>
 				</c:choose>
 

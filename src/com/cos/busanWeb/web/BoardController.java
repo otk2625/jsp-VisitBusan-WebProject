@@ -58,7 +58,9 @@ public class BoardController extends HttpServlet {
 			
 			List<sightDto> list = boardService.조회수순으로뿌리기(page);
 			int 개수 = (int) Math.ceil(boardService.목록개수() / 16);
-
+			
+			System.out.println(개수);
+			
 			if (page == 개수) {
 				request.setAttribute("nextEnd", true);
 			}
