@@ -85,6 +85,28 @@ public class BoardController extends HttpServlet {
 			request.setAttribute("dto", dto);
 			RequestDispatcher dis = request.getRequestDispatcher("board/detailSight.jsp");
 			dis.forward(request, response);
+		}else if (cmd.equals("search")) {
+			int page = Integer.parseInt(request.getParameter("page"));  // 최초 : 0, Next : 1, Next: 2
+			String keyword = (String)request.getParameter("keyword");
+			System.out.println(keyword);
+			
+			List<sightDto> list = boardService.검색뿌리기(page, keyword);
+			int 개수 = (int) Math.ceil(boardService.검색목록개수(keyword) / 16);
+			
+			request.setAttribute("searchOn", true);	
+			
+			if (page == 개수) {
+				request.setAttribute("nextEnd", true);
+			}
+
+			if (page == 0) {
+				request.setAttribute("preEnd", true);
+			}
+			request.setAttribute("sightlist", list);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("board/sightForm2.jsp");
+			dispatcher.forward(request, response);
+			
 		}
 		
 		

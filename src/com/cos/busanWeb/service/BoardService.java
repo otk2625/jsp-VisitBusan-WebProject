@@ -120,6 +120,16 @@ public class BoardService {
 		return null;
 
 	}
+
+	public List<sightDto> 검색뿌리기(int page, String keyword) {
+		
+		return dao.findBySearch(page,keyword);
+	}
+
+	public int 검색목록개수(String keyword) {
+		// TODO Auto-generated method stub
+		return dao.countBySearch(keyword);
+	}
 	
 
 }

@@ -101,4 +101,62 @@ public class SightDao {
 			} 
 			return null;
 		}
+		public List<sightDto> findBySearch(int page, String keyword) {
+List<sightDto> list = new ArrayList<sightDto>();
+			
+			String sql = "SELECT id, title, subtitle, mainimg From sight where title like ? order by readcount desc limit ?,16 ";
+			Connection conn = DB.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%"+keyword+"%");
+				pstmt.setInt(2, page*16);
+				rs = pstmt.executeQuery();
+
+				while(rs.next()) {
+					sightDto dto = sightDto.builder()
+							.id(rs.getInt("id"))
+							.title(rs.getString("title"))
+							.subTitle(rs.getString("subtitle"))
+							.mainImg(rs.getString("mainimg"))
+							.build();
+					
+					list.add(dto);
+				}
+				
+				return list;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DB.close(conn, pstmt, rs);
+			}
+			return null;
+		}
+		public int countBySearch(String keyword) {
+			String sql = "SELECT count(*) from sight where title like ?  ";
+			Connection conn = DB.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%"+keyword+"%");
+				rs =  pstmt.executeQuery();
+
+	
+				if(rs.next()){
+					return rs.getInt(1);
+				}
+				
+				//if(rs.next){return rs.getInt(1); => 개수 뽑아내기}
+			
+		
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally { // 무조건 실행
+				DB.close(conn, pstmt);
+			}
+			return -1;
+		}
 }
