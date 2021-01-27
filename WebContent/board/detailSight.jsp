@@ -4,21 +4,17 @@
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Abel');
-
 * {
 	padding: 0;
 	margin: 0;
 }
-
 a {
 	text-decoration: none;
 	color: #666;
 }
-
 li {
 	list-style: none;
 }
-
 body {
 	background-size: cover;
 	font-family: 'Abel', sans-serif;
@@ -27,7 +23,6 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
 body::before {
 	content: '';
 	position: fixed;
@@ -37,7 +32,6 @@ body::before {
 	width: 100%;
 	height: 100%;
 }
-
 #tab-menu {
 	margin-top: 100px;
 	width: 1200px;
@@ -46,31 +40,26 @@ body::before {
 	transform: translatex(-50%);
 	border-radius: 4px;
 }
-
 #tab-btn ul {
 	display: flex;
 	justify-content: space-around;
 	overflow: hidden;
 }
-
 #tab-btn li {
 	float: left;
 	width: 200px;
 	text-align: center;
 }
-
 #tab-btn li a {
 	display: block;
 	color: #2b210e;
 	padding: 15px 20px;
 	font-weight: bold;
 }
-
 #tab-btn li.active a {
 	border-bottom: 3px solid #2b210e;
 	color: #2b210e;
 }
-
 #tab-cont {
 	width: 100%;
 	background: #fff;
@@ -78,17 +67,14 @@ body::before {
 	box-sizing: border-box;
 	border-radius: 0 0 4px 4px;
 }
-
 .card-title {
 	text-align: center;
 	padding: 30px;
 }
-
 .viewCount {
 	display: flex;
 	justify-content: flex-start;
 }
-
 .viewCount div {
 	padding: 20px;
 	margin-right: 20px;
@@ -174,10 +160,8 @@ body::before {
 <script>
 	var tabBtn = $("#tab-btn > ul > li"); //각각의 버튼을 변수에 저장
 	var tabCont = $("#tab-cont > div"); //각각의 콘텐츠를 변수에 저장
-
 	//컨텐츠 내용을 숨겨주세요!
 	tabCont.hide().eq(0).show();
-
 	tabBtn.click(function() {
 		var target = $(this); //버튼의 타겟(순서)을 변수에 저장
 		var index = target.index(); //버튼의 순서를 변수에 저장
@@ -186,7 +170,6 @@ body::before {
 		tabCont.css("display", "none");
 		tabCont.eq(index).css("display", "block");
 	});
-
 </script>
 </body>
 </html>

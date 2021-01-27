@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cos.busanWeb.domain.sight.Item;
 import com.cos.busanWeb.domain.sight.dto.SightDetailDto;
-import com.cos.busanWeb.domain.sight.dto.FavoriteDto;
 import com.cos.busanWeb.domain.sight.dto.sightDto;
 import com.cos.busanWeb.service.BoardService;
 import com.cos.busanWeb.util.Script;

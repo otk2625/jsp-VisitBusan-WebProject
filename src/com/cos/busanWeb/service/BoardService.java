@@ -6,13 +6,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.cos.busanWeb.domain.sight.Item;
 import com.cos.busanWeb.domain.sight.SightDao;
 import com.cos.busanWeb.domain.sight.SightResponseDto;
-import com.cos.busanWeb.domain.sight.dto.FavoriteDto;
 import com.cos.busanWeb.domain.sight.dto.SightDetailDto;
 import com.cos.busanWeb.domain.sight.dto.sightDto;
 import com.google.gson.Gson;

@@ -9,7 +9,6 @@ import java.util.List;
 import com.cos.busanWeb.config.DB;
 import com.cos.busanWeb.domain.sight.dto.SightDetailDto;
 import com.cos.busanWeb.domain.sight.dto.sightDto;
-import com.cos.busanWeb.domain.user.User;
 
 public class SightDao {
 	
