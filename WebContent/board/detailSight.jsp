@@ -25,9 +25,10 @@ body::before {
   width: 100%; height: 100%;
 }
 #tab-menu {
-margin-top: 300px;
+  margin-top: 300px;
   width: 1200px; 
-  position: absolute; left: 50%; top: 100px;
+  margin-left: 50%;
+  margin-bottom: 200px;
   transform: translatex(-50%);
   border-radius: 4px;
 }
@@ -66,6 +67,7 @@ margin-top: 300px;
 </div>
 
 
+ <c:forEach var="detail" items="${detail}" varStatus="status">
 <div id="tab-menu">
   <div id="tab-btn">
     <ul>
@@ -78,13 +80,20 @@ margin-top: 300px;
   </div>
   <hr/>
   <div id="tab-cont">
-    <div>${list.HOMEPAGEURL}</div>
+
+    <div>${detail.ITEMCNTNTS }</div>
     <div>메뉴2</div>
     <div>메뉴3</div>
     <div>메뉴4</div>
     <div>메뉴5</div>
   </div>
 </div>
+</c:forEach>
+
+
+<%@ include file="../layout/footer.jsp"%>
+
+
 
 <script>
 var tabBtn = $("#tab-btn > ul > li");     //각각의 버튼을 변수에 저장

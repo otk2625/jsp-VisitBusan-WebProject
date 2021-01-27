@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 
 
+<style>
+</style>
+
 <div class="footer-dark">
 	<footer>
 		<div class="container">
