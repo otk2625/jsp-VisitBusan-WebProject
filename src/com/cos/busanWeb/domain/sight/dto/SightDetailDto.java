@@ -1,4 +1,4 @@
-package com.cos.busanWeb.domain.sight;
+package com.cos.busanWeb.domain.sight.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

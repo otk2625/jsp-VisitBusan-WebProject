@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cos.busanWeb.config.DB;
+import com.cos.busanWeb.domain.sight.dto.SightDetailDto;
 import com.cos.busanWeb.domain.sight.dto.sightDto;
 import com.cos.busanWeb.domain.user.User;
 
@@ -72,8 +73,8 @@ public class SightDao {
 		
 		public SightDetailDto findById(int id){
 			StringBuffer sb = new StringBuffer();
-			sb.append("select id, title, subTitle, content,mainImg, readCount");
-			sb.append("from sight");
+			sb.append("select id, title, subTitle, content, mainImg, readCount ");
+			sb.append("from sight ");
 			sb.append("where id = ?");
 
 			String sql = sb.toString();
@@ -97,9 +98,7 @@ public class SightDao {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-			} finally {
-				DB.close(conn, pstmt, rs);
-			}
+			} 
 			return null;
 		}
 }

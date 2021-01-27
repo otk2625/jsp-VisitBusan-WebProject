@@ -78,7 +78,7 @@ margin-top: 300px;
   </div>
   <hr/>
   <div id="tab-cont">
-    <div>${sightlist.title}</div>
+    <div>${list.HOMEPAGEURL}</div>
     <div>메뉴2</div>
     <div>메뉴3</div>
     <div>메뉴4</div>

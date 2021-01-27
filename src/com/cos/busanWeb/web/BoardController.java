@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cos.busanWeb.domain.sight.Item;
-import com.cos.busanWeb.domain.sight.SightDetailDto;
+import com.cos.busanWeb.domain.sight.dto.SightDetailDto;
 import com.cos.busanWeb.domain.sight.dto.sightDto;
 import com.cos.busanWeb.service.BoardService;
 
