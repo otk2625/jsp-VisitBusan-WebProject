@@ -25,6 +25,7 @@ body::before {
   width: 100%; height: 100%;
 }
 #tab-menu {
+margin-top: 300px;
   width: 1200px; 
   position: absolute; left: 50%; top: 100px;
   transform: translatex(-50%);
@@ -58,6 +59,13 @@ body::before {
 }
 </style>
 
+<div class="outer">
+	<div class="jb-text">
+		<p style="font-size: xx-large;  color: white;">부산에 가면</p>
+	</div>
+</div>
+
+
 <div id="tab-menu">
   <div id="tab-btn">
     <ul>
@@ -70,7 +78,7 @@ body::before {
   </div>
   <hr/>
   <div id="tab-cont">
-    <div>메뉴1</div>
+    <div>${sightlist.title}</div>
     <div>메뉴2</div>
     <div>메뉴3</div>
     <div>메뉴4</div>

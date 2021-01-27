@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.cos.busanWeb.domain.sight.Item;
 import com.cos.busanWeb.domain.sight.SightDao;
+import com.cos.busanWeb.domain.sight.SightDetailDto;
 import com.cos.busanWeb.domain.sight.SightResponseDto;
 import com.cos.busanWeb.domain.sight.dto.sightDto;
 import com.google.gson.Gson;
@@ -73,6 +74,11 @@ public class BoardService {
 	public int 목록개수() {
 		
 		return dao.countAll();
+	}
+	
+	public SightDetailDto 글상세보기(int id) {
+		
+		return dao.findById(id);
 	}
 
 }

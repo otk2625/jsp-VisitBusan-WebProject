@@ -356,7 +356,7 @@ nav {
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 
 			<div>
-				<a href="#"> <img class="home_img" src="images/Screenshot_360.png">
+				<a href="<%=request.getContextPath()%>/board?cmd=main&page=0"> <img class="home_img" src="images/Screenshot_360.png">
 				</a>
 			</div>
 

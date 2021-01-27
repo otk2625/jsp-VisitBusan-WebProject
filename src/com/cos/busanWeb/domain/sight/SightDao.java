@@ -69,4 +69,37 @@ public class SightDao {
 			}
 			return -1;
 		}
+		
+		public SightDetailDto findById(int id){
+			StringBuffer sb = new StringBuffer();
+			sb.append("select id, title, subTitle, content,mainImg, readCount");
+			sb.append("from sight");
+			sb.append("where id = ?");
+
+			String sql = sb.toString();
+			Connection conn = DB.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs  = null;
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, id);
+				rs =  pstmt.executeQuery();
+				
+				if(rs.next()) { 
+					SightDetailDto dto = new SightDetailDto();
+					dto.setId(rs.getInt("id"));
+					dto.setTitle(rs.getString("title"));
+					dto.setSubTitle(rs.getString("subTitle"));
+					dto.setContent(rs.getString("content"));
+					dto.setMainImg(rs.getString("mainImg"));
+					dto.setReadCount(rs.getInt("readCount"));
+					return dto;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DB.close(conn, pstmt, rs);
+			}
+			return null;
+		}
 }

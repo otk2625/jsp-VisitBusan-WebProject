@@ -61,7 +61,9 @@ public class UserController extends HttpServlet {
 			System.out.println("회원가입 : "+dto);
 			int result = userService.회원가입(dto);
 			if(result == 1) {
-				response.sendRedirect("loginForm.jsp");
+				RequestDispatcher dis = 
+						request.getRequestDispatcher("user/loginForm.jsp");
+						dis.forward(request, response);
 			}else {
 				Script.back(response,"회원가입 실패");
 			}

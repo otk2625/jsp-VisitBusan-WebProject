@@ -643,7 +643,7 @@
       <div class="card-box col-xl-3 col-lg-4 col-md-6 mb-4">
         <div class="bg-white rounded shadow-sm"><img src="${sightlist.mainImg }" alt="" class="img-fluid card-img-top">
           <div class="p-4">
-            <h5> <a href="#" class="text-dark">${sightlist.title }</a></h5>
+            <h5> <a href="/busanWeb/board?cmd=detail&id=${sightlist.id}" class="text-dark">${sightlist.title }</a></h5>
             <p class="small text-muted mb-0">${sightlist.subTitle }</p>
             <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
               <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPG</span></p>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cos.busanWeb.domain.sight.Item;
+import com.cos.busanWeb.domain.sight.SightDetailDto;
 import com.cos.busanWeb.domain.sight.dto.sightDto;
 import com.cos.busanWeb.service.BoardService;
 
@@ -73,6 +74,14 @@ public class BoardController extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("board/sightForm2.jsp");
 			dispatcher.forward(request, response);
 			
+		}
+		
+		else if(cmd.equals("detail")) {
+			int id = Integer.parseInt(request.getParameter("id"));
+			SightDetailDto dto = boardService.글상세보기(id); 
+			request.setAttribute("dto", dto);
+			RequestDispatcher dis = request.getRequestDispatcher("board/detailSight.jsp");
+			dis.forward(request, response);
 		}
 		
 		
