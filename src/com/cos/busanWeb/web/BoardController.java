@@ -79,6 +79,9 @@ public class BoardController extends HttpServlet {
 		else if(cmd.equals("detail")) {
 			int id = Integer.parseInt(request.getParameter("id"));
 			SightDetailDto dto = boardService.글상세보기(id); 
+			List<Item> list = boardService.글상세뿌리기(id);
+			
+			request.setAttribute("detail", list);
 			request.setAttribute("dto", dto);
 			RequestDispatcher dis = request.getRequestDispatcher("board/detailSight.jsp");
 			dis.forward(request, response);

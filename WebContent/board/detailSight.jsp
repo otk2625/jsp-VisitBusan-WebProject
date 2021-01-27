@@ -66,6 +66,7 @@ margin-top: 300px;
 </div>
 
 
+ <c:forEach var="detail" items="${detail}" varStatus="status">
 <div id="tab-menu">
   <div id="tab-btn">
     <ul>
@@ -78,14 +79,14 @@ margin-top: 300px;
   </div>
   <hr/>
   <div id="tab-cont">
-    <div>${sightlist.title}</div>
+    <div>${detail.ITEMCNTNTS }</div>
     <div>메뉴2</div>
     <div>메뉴3</div>
     <div>메뉴4</div>
     <div>메뉴5</div>
   </div>
 </div>
-
+</c:forEach>
 <script>
 var tabBtn = $("#tab-btn > ul > li");     //각각의 버튼을 변수에 저장
 var tabCont = $("#tab-cont > div");       //각각의 콘텐츠를 변수에 저장
