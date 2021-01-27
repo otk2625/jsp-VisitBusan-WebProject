@@ -15,6 +15,7 @@ import com.cos.busanWeb.domain.sight.Item;
 import com.cos.busanWeb.domain.sight.dto.SightDetailDto;
 import com.cos.busanWeb.domain.sight.dto.sightDto;
 import com.cos.busanWeb.service.BoardService;
+import com.cos.busanWeb.util.Script;
 
 //http://localhost:8080/blog/board
 @WebServlet("/board")
@@ -78,13 +79,34 @@ public class BoardController extends HttpServlet {
 		
 		else if(cmd.equals("detail")) {
 			int id = Integer.parseInt(request.getParameter("id"));
+			
 			SightDetailDto dto = boardService.글상세보기(id); 
 			List<Item> list = boardService.글상세뿌리기(id);
+			if(dto == null) {
+				Script.back(response, "상세보기에 실패하였습니다.");
+			} else {
+				request.setAttribute("detail", list);
+				request.setAttribute("dto", dto);
+				RequestDispatcher dis = request.getRequestDispatcher("board/detailSight.jsp");
+				dis.forward(request, response);	
+			}
+		} 
+		
+		else if (cmd.equals("like")) {
+			int id = Integer.parseInt(request.getParameter("id"));
+			 
+			SightDetailDto dto = boardService.좋아요(id); 
+			List<Item> list = boardService.글상세뿌리기(id);
 			
-			request.setAttribute("detail", list);
-			request.setAttribute("dto", dto);
-			RequestDispatcher dis = request.getRequestDispatcher("board/detailSight.jsp");
-			dis.forward(request, response);
+			if(dto == null) {
+				Script.back(response, "좋아요에 실패하였습니다.");
+			} else {
+				request.setAttribute("detail", list);
+				request.setAttribute("dto", dto);
+				RequestDispatcher dis = request.getRequestDispatcher("board/detailSight.jsp");
+				dis.forward(request, response);	
+			}
+			
 		}else if (cmd.equals("search")) {
 			int page = Integer.parseInt(request.getParameter("page"));  // 최초 : 0, Next : 1, Next: 2
 			String keyword = (String)request.getParameter("keyword");
@@ -106,10 +128,7 @@ public class BoardController extends HttpServlet {
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("board/sightForm2.jsp");
 			dispatcher.forward(request, response);
-			
-		}
-		
-		
+			}
 	}
 
 }

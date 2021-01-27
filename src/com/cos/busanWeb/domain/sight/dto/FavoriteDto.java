@@ -9,12 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SightDetailDto {
+public class FavoriteDto {
 	private int id;
-	private String title;
-	private String subTitle;
-	private String content;
-	private String mainImg;
-	private int readCount;
-	private int likeCount;
+	private int userId;
+	private int sightId;
 }
