@@ -73,7 +73,7 @@ public class SightDao {
 		
 		public SightDetailDto findById(int id){
 			StringBuffer sb = new StringBuffer();
-			sb.append("select id, title, subTitle, content, mainImg, readCount ");
+			sb.append("select id, title, subTitle, content, mainImg, readCount, likeCount ");
 			sb.append("from sight ");
 			sb.append("where id = ?");
 
@@ -94,11 +94,66 @@ public class SightDao {
 					dto.setContent(rs.getString("content"));
 					dto.setMainImg(rs.getString("mainImg"));
 					dto.setReadCount(rs.getInt("readCount"));
+					dto.setLikeCount(rs.getInt("likeCount"));
 					return dto;
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
 			return null;
+		}
+		
+		public int updateReadCount(int id) {
+			String sql = "UPDATE sight SET readCount = readCount+1 WHERE id = ?";
+			Connection conn = DB.getConnection();
+			PreparedStatement pstmt = null;
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, id);
+				int result = pstmt.executeUpdate();
+				return result;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally { 
+				DB.close(conn, pstmt);
+			}
+			return -1;
+		}
+		
+		
+		public int updatelikeCount(int id) {
+			String sql = "UPDATE sight SET likeCount = likeCount+1 WHERE id = ?";
+			Connection conn = DB.getConnection();
+			PreparedStatement pstmt = null;
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, id);
+				int result = pstmt.executeUpdate();
+				return result;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally { 
+				DB.close(conn, pstmt);
+			}
+			return -1;
+		}
+		
+		public int like(int id, int userId, int sightId) {
+			String sql = "INSERT INTO favorite VALUES(?, ?, ?)";
+			Connection conn = DB.getConnection();
+			PreparedStatement pstmt = null;
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, id);
+				pstmt.setInt(2, userId);
+				pstmt.setInt(3, sightId);
+				int result = pstmt.executeUpdate();
+				return result;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally { 
+				DB.close(conn, pstmt);
+			}
+			return -1;
 		}
 }

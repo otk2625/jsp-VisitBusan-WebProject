@@ -12,6 +12,7 @@ import java.util.List;
 import com.cos.busanWeb.domain.sight.Item;
 import com.cos.busanWeb.domain.sight.SightDao;
 import com.cos.busanWeb.domain.sight.SightResponseDto;
+import com.cos.busanWeb.domain.sight.dto.FavoriteDto;
 import com.cos.busanWeb.domain.sight.dto.SightDetailDto;
 import com.cos.busanWeb.domain.sight.dto.sightDto;
 import com.google.gson.Gson;
@@ -77,8 +78,24 @@ public class BoardService {
 	}
 	
 	public SightDetailDto 글상세보기(int id) {
+		int result = dao.updateReadCount(id);
+		if(result == 1) {
+			return dao.findById(id);	
+		} else {
+			return null;
+		}
 		
-		return dao.findById(id);
+	}
+	
+	public SightDetailDto 좋아요(int id) {
+		int like = dao.updatelikeCount(id);
+		int result = dao.updateReadCount(id);
+		if(result == 1 && like == 1) {
+			return dao.findById(id);	
+		} else {
+			return null;
+		}
+		
 	}
 	
 	public List<Item> 글상세뿌리기(int id) throws IOException {
