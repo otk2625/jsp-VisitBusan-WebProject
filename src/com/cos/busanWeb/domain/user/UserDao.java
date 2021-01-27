@@ -81,4 +81,32 @@ public class UserDao {
 		}
 		return null;
 	}
+
+	public User findById(int userId) {
+		String sql = "SELECT id, username, email, address From user WHERE id =? ";
+		Connection conn = DB.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userId);
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				User user = User.builder()
+						.id(rs.getInt("id"))
+						.username(rs.getString("username"))
+						.email(rs.getString("email"))
+						.address(rs.getString("address"))
+						.build();
+				return user;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally { // 무조건 실행
+			DB.close(conn, pstmt, rs);
+		}
+		return null;
+	}
 }

@@ -113,6 +113,26 @@ public class UserController extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.invalidate();
 			response.sendRedirect("index.jsp");
+		}else if(cmd.equals("profileForm")) {
+			
+			System.out.println(request.getParameter("userId"));
+			int userId = Integer.parseInt(request.getParameter("userId"));
+			
+			User userEntity = userService.유저정보(userId);
+			
+			if(userEntity != null) {
+				
+				request.setAttribute("userProfile", userEntity);
+				
+				RequestDispatcher dis = 
+						request.getRequestDispatcher("user/profileForm.jsp");
+						dis.forward(request, response);
+			} else {
+				Script.back(response, "정보불러오기 실패");
+			}
+			
+			
 		}
+		
 	}
 }

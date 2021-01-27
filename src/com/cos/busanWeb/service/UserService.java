@@ -25,4 +25,9 @@ public class UserService {
 	public User 로그인(LoginReqDto dto) {	
 		return userDao.findByUsernameAndPassword(dto);
 	}
+
+	public User 유저정보(int userId) {
+		// TODO Auto-generated method stub
+		return userDao.findById(userId);
+	}
 }

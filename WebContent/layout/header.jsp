@@ -29,6 +29,14 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 
+<!-- profile -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<!-- profile end -->
+
+
 <!-- footer css -->
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
@@ -83,6 +91,12 @@
 .outer {
 	position: relative;
 	background: url(https://visitbusan.net/images/sub/subvisu-01.jpg);
+	height:309px;
+	text-align: center;
+}
+.outerProfile {
+	position: relative;
+	background: url(https://visitbusan.net/images/sub/subvisu-10.jpg);
 	height:309px;
 	text-align: center;
 }
@@ -303,6 +317,10 @@ body {
 	position: fixed;
 	z-index: 2;
 }
+.headerprofile {
+	width: 100%;
+	z-index: 2;
+}
 nav {
 	width: 100%;
 	height: 80px;
@@ -412,23 +430,30 @@ nav {
 							class="dropdown-item" href="#">여행공유</a>
 					</div></li>
 			</ul>
+		
 			<c:choose>
 			<c:when test="${sessionScope.principal != null}">
+			
 			<div class ="navbar_login">
 				<a href="<%=request.getContextPath()%>/user?cmd=logout">로그아웃</a>
+			</div>
+			<div class="navbar_icon">
+				<i class="material-icons">search</i>
+				<a href="<%=request.getContextPath()%>/user?cmd=profileForm&userId=${sessionScope.principal.id}"><i class="material-icons">perm_identity</i></a>
 			</div>
 			</c:when>
 			<c:otherwise>
 			<div class ="navbar_login">
 				<a href="<%=request.getContextPath()%>/user?cmd=loginForm">로그인</a>
 			</div>
-			</c:otherwise>
-			</c:choose>
-			
 			<div class="navbar_icon">
 				<i class="material-icons">search</i>
 				<i class="material-icons">perm_identity</i>
 			</div>
+			</c:otherwise>
+			</c:choose>
+			
+			
 		</div>
 	</nav>
 
