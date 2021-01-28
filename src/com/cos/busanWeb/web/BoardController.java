@@ -58,9 +58,10 @@ public class BoardController extends HttpServlet {
 			
 //			response.sendRedirect("board/mainBoard2.jsp");
 		}else if(cmd.equals("sightForm2")) {
-			
+
 			int page = Integer.parseInt(request.getParameter("page"));
-			
+
+			SightDetailDto dto = boardService.좋아요(page); 
 			List<sightDto> list = boardService.조회수순으로뿌리기(page);
 			int 개수 = (int) Math.ceil(boardService.목록개수() / 16);
 			
@@ -73,6 +74,10 @@ public class BoardController extends HttpServlet {
 			if (page == 0) {
 				request.setAttribute("preEnd", true);
 			}
+			
+
+			request.setAttribute("dto", dto);
+			System.out.println("DTO : " + dto);
 			request.setAttribute("sightlist", list);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("board/sightForm2.jsp");
@@ -115,6 +120,7 @@ public class BoardController extends HttpServlet {
 			
 		}else if (cmd.equals("search")) {
 			int page = Integer.parseInt(request.getParameter("page"));  // 최초 : 0, Next : 1, Next: 2
+
 			String keyword = (String)request.getParameter("keyword");
 			System.out.println(keyword);
 			
