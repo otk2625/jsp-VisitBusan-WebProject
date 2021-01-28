@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cos.busanWeb.domain.review.dto.ReviewDto;
 import com.cos.busanWeb.domain.sight.Item;
 import com.cos.busanWeb.domain.sight.dto.SightDetailDto;
 import com.cos.busanWeb.domain.sight.dto.sightDto;
 import com.cos.busanWeb.service.BoardService;
+import com.cos.busanWeb.service.ReviewService;
 import com.cos.busanWeb.util.Script;
 
 //http://localhost:8080/blog/board
@@ -42,6 +44,7 @@ public class BoardController extends HttpServlet {
 		System.out.println(cmd);
 		
 		BoardService boardService = new BoardService();
+		ReviewService reviewService = new ReviewService();
 		
 		if(cmd.equals("main")) {
 			List<Item> list = boardService.뿌리기(1,12);
@@ -82,9 +85,12 @@ public class BoardController extends HttpServlet {
 			
 			SightDetailDto dto = boardService.글상세보기(id); 
 			List<Item> list = boardService.글상세뿌리기(id);
+			List<ReviewDto> reviews = reviewService.댓글목록(id);
+			
 			if(dto == null) {
 				Script.back(response, "상세보기에 실패하였습니다.");
 			} else {
+				request.setAttribute("reviews", reviews);
 				request.setAttribute("detail", list);
 				request.setAttribute("dto", dto);
 				RequestDispatcher dis = request.getRequestDispatcher("board/detailSight.jsp");
