@@ -320,6 +320,47 @@ body::before {
 	border-radius: 0;
 	height: 30px;
 }
+
+.modal-backdrop {
+	position: static;
+}
+
+.link-container {
+	margin-left: 25%; margin-bottom : 20px;
+	width: 600px;
+	margin-bottom: 20px;
+}
+
+.link-container h2 {
+	background-color: #abd5ea;
+	color: #333;
+	font-size: 18px;
+	line-height: 30px;
+	margin: 0;
+	padding-left: 10px;
+}
+
+.link-container ul {
+	font-size: 13px;
+	list-style-type: none;
+	padding-left: 0;
+	margin: 0;
+}
+
+.link-container ul li {
+	margin-bottom: 50px; background-image :
+	url('http://i.msdn.microsoft.com/dynimg/IC688534.png');
+	background-repeat: no-repeat;
+	background-position: center left;
+	border-bottom: #777 1px solid;
+	padding-left: 20px;
+	line-height: 30px;
+	background-image: url('http://i.msdn.microsoft.com/dynimg/IC688534.png');
+}
+
+.link-container ul li a {
+	text-decoration: none;
+}
 </style>
 
 <div class="outer">
@@ -387,9 +428,49 @@ body::before {
 
 			<div>
 				<p>${detail.ITEMCNTNTS }</p>
+				<img alt="" src="${detail.MAINIMGTHUMB }">
 			</div>
 			<div>메뉴2</div>
-			<div>메뉴3</div>
+
+			<div class="link-container">
+				<h2 style="font-size: 20px">
+					<b>주소</b>
+				</h2>
+				<ul>
+					<li><a href="#" style="font-size: 15px">${detail.ADDR1 }</a>
+				</ul>
+
+				<h2 style="font-size: 20px">
+					<b>전화번호</b>
+				</h2>
+				<ul>
+					<li><a href="#" style="font-size: 15px">${detail.CNTCTTEL }</a>
+				</ul>
+
+				<h2 style="font-size: 20px">
+					<b>홈페이지</b>
+				</h2>
+				<ul>
+					<li><a href="${detail.HOMEPAGEURL }" style="font-size: 15px">${detail.HOMEPAGEURL }</a>
+				</ul>
+
+				<h2 style="font-size: 20px">
+					<b>교통정보</b>
+				</h2>
+				<ul>
+					<li><a href="#" style="font-size: 15px">${detail.TRFCINFO }</a>
+				</ul>
+
+				<h2 style="font-size: 20px">
+					<b>장애인 시설</b>
+				</h2>
+				<ul>
+					<li><a href="#" style="font-size: 15px">${detail.MIDDLESIZERM1 }</a>
+				</ul>
+			</div>
+
+
+
 			<div>메뉴4</div>
 			<div class="review">
 				<div class="container">
