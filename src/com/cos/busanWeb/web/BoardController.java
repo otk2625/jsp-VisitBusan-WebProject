@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.cos.busanWeb.domain.review.dto.ReviewDto;
 import com.cos.busanWeb.domain.sight.Item;
 import com.cos.busanWeb.domain.sight.dto.SightDetailDto;
+import com.cos.busanWeb.domain.sight.dto.SightRepDto;
 import com.cos.busanWeb.domain.sight.dto.sightDto;
 import com.cos.busanWeb.service.BoardService;
 import com.cos.busanWeb.service.ReviewService;
@@ -61,7 +62,7 @@ public class BoardController extends HttpServlet {
 			
 			int page = Integer.parseInt(request.getParameter("page"));
 			
-			List<sightDto> list = boardService.조회수순으로뿌리기(page);
+			List<SightRepDto> list = boardService.조회수순으로뿌리기(page);
 			int 개수 = (int) Math.ceil(boardService.목록개수() / 16);
 			
 			System.out.println(개수);
