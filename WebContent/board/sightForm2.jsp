@@ -115,13 +115,13 @@
 
 						<div class="viewCount">
 							<div class="readView">
-								<img src="images/read.png"> : 0
+								<img src="images/read.png"> : ${sightlist.readCount }
 							</div>
 							<div class="likeView">
-								<img src="images/like.png"> : 0
+								<img src="images/like.png"> : ${sightlist.likeCount }
 							</div>
 							<div class="replyView">
-								<img src="images/reply.png"> : 0
+								<img src="images/reply.png"> : ${sightlist.reviewCount }
 							</div>
 						</div>
 					</div>

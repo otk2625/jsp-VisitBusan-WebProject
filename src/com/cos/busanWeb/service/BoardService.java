@@ -12,6 +12,7 @@ import com.cos.busanWeb.domain.sight.Item;
 import com.cos.busanWeb.domain.sight.SightDao;
 import com.cos.busanWeb.domain.sight.SightResponseDto;
 import com.cos.busanWeb.domain.sight.dto.SightDetailDto;
+import com.cos.busanWeb.domain.sight.dto.SightRepDto;
 import com.cos.busanWeb.domain.sight.dto.sightDto;
 import com.google.gson.Gson;
 
@@ -63,9 +64,8 @@ public class BoardService {
 
 	}
 	
-	public List<sightDto> 조회수순으로뿌리기(int page) throws IOException {
-		
-		
+	public List<SightRepDto> 조회수순으로뿌리기(int page) throws IOException {
+
 		return dao.findByReadCount(page);
 
 	}
