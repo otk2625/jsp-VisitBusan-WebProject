@@ -17,6 +17,10 @@
 <style>
 @import url('https://fonts.googleapis.com/css?family=Abel');
 
+.modal-backdrop{
+position: static;
+}
+
 * {
 	padding: 0;
 	margin: 0;
