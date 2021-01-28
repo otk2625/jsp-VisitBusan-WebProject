@@ -11,11 +11,13 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
-
-
-
+	
 <style>
 @import url('https://fonts.googleapis.com/css?family=Abel');
+
+.modal-backdrop{
+position: static;
+}
 
 * {
 	padding: 0;
@@ -357,7 +359,11 @@ body::before {
 .link-container ul li a {
 	text-decoration: none;
 }
+
+
+
 </style>
+
 
 <div class="outer">
 	<div class="jb-text">
@@ -426,7 +432,13 @@ body::before {
 				<p>${detail.ITEMCNTNTS }</p>
 				<img alt="" src="${detail.MAINIMGTHUMB }">
 			</div>
-			<div>메뉴2</div>
+			<div>
+			
+			<div id="map-lat" style="display: none;">${detail.LAT }</div>
+			<div id="map-lng" style="display: none;">${detail.LNG }</div>
+			<div id="map" style="width:1200px;height:400px;"></div>
+			
+			</div>
 
 			<div class="link-container">
 				<h2 style="font-size: 20px">
@@ -627,9 +639,7 @@ body::before {
 													name="content2">
      												
      											</textarea>
-
-											</div>
-
+     											
 										</div>
 										<div class="form-group">
 											<!-- <button class="btn btn-primary btn-sm" type="button">
@@ -712,7 +722,19 @@ function replySave(userId, sightId){
 			}
 		});
 	};
+	$("#map-lat").text(), $("#map-lng").text()
+
 	
+	
+	var map = new naver.maps.Map('map', {
+    center: new naver.maps.LatLng($("#map-lat").text(), $("#map-lng").text()),
+    zoom: 15
+});
+
+var marker = new naver.maps.Marker({
+    position: new naver.maps.LatLng($("#map-lat").text(), $("#map-lng").text()),
+    map: map
+});
 	
 </script>
 </body>

@@ -8,15 +8,23 @@ import java.util.List;
 
 import com.cos.busanWeb.config.DB;
 import com.cos.busanWeb.domain.sight.dto.SightDetailDto;
+import com.cos.busanWeb.domain.sight.dto.SightRepDto;
 import com.cos.busanWeb.domain.sight.dto.sightDto;
 
 public class SightDao {
 	
 	// 조회순으로
-		public List<sightDto> findByReadCount(int page) {
-			List<sightDto> list = new ArrayList<sightDto>();
+		public List<SightRepDto> findByReadCount(int page) {
+			List<SightRepDto> list = new ArrayList<SightRepDto>();
 			
-			String sql = "SELECT id, title, subtitle, mainimg From sight order by readcount desc limit ?,16 ";
+			StringBuffer sb = new StringBuffer();
+			sb.append("SELECT s.id, s.title, s.subtitle, s.mainimg,s.readCount,s.likeCount ,count(r.id) as reviewCount "
+					+ "From review r right OUTER JOIN sight s "
+					+ "on s.id = r.sightId "
+					+ "group by id "
+					+ "order by readcount desc limit ?,16 ");
+			String sql = sb.toString();
+			
 			Connection conn = DB.getConnection();
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -26,11 +34,14 @@ public class SightDao {
 				rs = pstmt.executeQuery();
 
 				while(rs.next()) {
-					sightDto dto = sightDto.builder()
+					SightRepDto dto = SightRepDto.builder()
 							.id(rs.getInt("id"))
 							.title(rs.getString("title"))
 							.subTitle(rs.getString("subtitle"))
 							.mainImg(rs.getString("mainimg"))
+							.readCount(rs.getInt("s.readCount"))
+							.likeCount(rs.getInt("s.likeCount"))
+							.reviewCount(rs.getInt("reviewCount"))
 							.build();
 					
 					list.add(dto);
