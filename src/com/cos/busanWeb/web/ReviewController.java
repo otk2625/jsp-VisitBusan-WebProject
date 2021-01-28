@@ -56,8 +56,6 @@ public class ReviewController extends HttpServlet {
 			Gson gson = new Gson();
 			ReviewReqDto dto = gson.fromJson(reqData, ReviewReqDto.class);
 			
-			System.out.println("내용 :"+ request.getParameter("content"));
-			System.out.println("내용 :"+ request.getParameter("con"));
 			System.out.println("dto : " + dto);
 
 			int result = reviewService.댓글쓰기(dto);

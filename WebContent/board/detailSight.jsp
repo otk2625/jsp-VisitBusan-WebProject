@@ -17,9 +17,47 @@
 <style>
 @import url('https://fonts.googleapis.com/css?family=Abel');
 
-.modal-backdrop{
-position: static;
+.modal-backdrop {
+	position: static;
 }
+
+#star_grade a.on {
+	color: red;
+}
+
+.starR {
+	background:
+		url('http://miuu227.godohosting.com/images/icon/ico_review.png')
+		no-repeat right 0;
+	background-size: auto 100%;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	text-indent: -9999px;
+	cursor: pointer;
+}
+
+.starR.on {
+	background-position: 0 0;
+	color: yellow;
+}
+.starR2 {
+	background:
+		url('http://miuu227.godohosting.com/images/icon/ico_review.png')
+		no-repeat right 0;
+	background-size: auto 100%;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	text-indent: -9999px;
+
+}
+
+.starR2.on {
+	background-position: 0 0;
+	color: yellow;
+}
+
 
 * {
 	padding: 0;
@@ -480,7 +518,9 @@ body::before {
 										<a href="#" class="btn btn-outline-primary btn-sm float-right">Top
 											Rated</a>
 										<h5 class="mb-1">리뷰</h5>
-
+										<br>
+										<hr>
+										
 										<c:forEach items="${reviews}" var="review" varStatus="status">
 											<!-- 리뷰 시작점 -->
 											<div class="reviews-members pt-4 pb-4">
@@ -490,13 +530,32 @@ body::before {
 														class="mr-3 rounded-pill"></a>
 													<div class="media-body">
 														<div class="reviews-members-header">
-															<span class="star-rating float-right"> <a href="#"><i
-																	class="icofont-ui-rating active"></i></a> <a href="#"><i
-																	class="icofont-ui-rating active"></i></a> <a href="#"><i
-																	class="icofont-ui-rating active"></i></a> <a href="#"><i
-																	class="icofont-ui-rating active"></i></a> <a href="#"><i
-																	class="icofont-ui-rating"></i></a>
-															</span>
+														<c:set var="likePoint" value="${review.likePoint}"  />
+														<div class="starRev2 float-right">
+														<%
+														String star = (String)(pageContext.getAttribute("likePoint"));
+														System.out.println("star : " + star);
+														int a = 2;
+														
+														for(int i=0; i<a; i++){%>
+														<span class="starR2 on " >별</span>
+
+														<% } %>
+														<%for(int j = 0; j < 5-a; j++){%>
+															<span class="starR2" >별</span>
+														<%}%>
+														
+														
+														
+														</div>
+															<!-- <div class="starRev2 float-right">
+																<span class="starR2 on " >별1</span> <span
+																	class="starR2" >별2</span> <span
+																	class="starR2" >별3</span> <span
+																	class="starR2" >별4</span> <span
+																	class="starR2" >별5</span>
+
+															</div> -->
 															<h6 class="mb-1">
 																<a class="text-black" href="#">${review.username} </a>
 															</h6>
@@ -527,13 +586,17 @@ body::before {
 										<h5 class="mb-4">리뷰를 작성해 보세요</h5>
 										<p class="mb-2">이 장소는 어떠셨나요?</p>
 										<div class="mb-4">
-											<span class="star-rating"> <a href="#"><i
-													class="icofont-ui-rating icofont-2x"></i></a> <a href="#"><i
-													class="icofont-ui-rating icofont-2x"></i></a> <a href="#"><i
-													class="icofont-ui-rating icofont-2x"></i></a> <a href="#"><i
-													class="icofont-ui-rating icofont-2x"></i></a> <a href="#"><i
-													class="icofont-ui-rating icofont-2x"></i></a>
-											</span>
+
+
+											<div class="starRev">
+												<span class="starR on " onclick="mark(1)">별1</span> <span
+													class="starR" onclick="mark(2)">별2</span> <span
+													class="starR" onclick="mark(3)">별3</span> <span
+													class="starR" onclick="mark(4)">별4</span> <span
+													class="starR" onclick="mark(5)">별5</span>
+
+											</div>
+											<input type="hidden" name="star" id="star">
 										</div>
 
 										<div class="form-group">
@@ -594,6 +657,14 @@ $('#summernote').summernote({
 	tabsize : 2,
 	height : 400
 });
+
+
+
+$('.starRev span').click(function(){
+	  $(this).parent().children('span').removeClass('on');
+	  $(this).addClass('on').prevAll('span').addClass('on');
+	  return false;
+	});
 </script>
 <script>
 	var tabBtn = $("#tab-btn > ul > li"); //각각의 버튼을 변수에 저장
@@ -610,6 +681,10 @@ $('#summernote').summernote({
 	});
 
 	
+function mark(star) {
+	document.getElementById("star").value = star;
+	console.log($("#star").val());
+}
 	
 function replySave(userId, sightId){
 		console.log($("#summernote").val());
@@ -617,7 +692,8 @@ function replySave(userId, sightId){
 			userId: userId,
 			sightId: sightId,
 			content: $("#summernote").val(),
-			title: $("#title").val()
+			title: $("#title").val(),
+			likePoint: $("#star").val()
 		}
 		$.ajax({
 			type: "post",

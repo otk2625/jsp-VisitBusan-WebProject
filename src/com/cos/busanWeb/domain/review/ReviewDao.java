@@ -13,7 +13,7 @@ import com.cos.busanWeb.domain.review.dto.ReviewReqDto;
 public class ReviewDao {
 
 	public int reviewSave(ReviewReqDto dto) {
-		String sql = "INSERT INTO review(userId, sightid, content, title, createDate) VALUES(?,?,?,?, now())";
+		String sql = "INSERT INTO review(userId, sightid, content, title, likePoint, createDate) VALUES(?,?,?,?,?, now())";
 		Connection conn = DB.getConnection();
 		PreparedStatement pstmt = null;
 		try {
@@ -22,6 +22,7 @@ public class ReviewDao {
 			pstmt.setInt(2, dto.getSightId());
 			pstmt.setString(3, dto.getContent());
 			pstmt.setString(4, dto.getTitle());
+			pstmt.setInt(5, dto.getLikePoint());
 			int result = pstmt.executeUpdate();
 			return result;
 		} catch (Exception e) {
