@@ -153,15 +153,16 @@ public class ReviewDao {
 			
 			return null;
 		}
-		public int countStar(int sightId) {
-			String sql = "select count(likePoint) as 개수 from review where likePoint=? ";
+		public int countStar(int id, int sightId) {
+			String sql = "select count(likePoint) as 개수 from review r inner join sight s on r.sightId = s.id where likePoint=? and sightid=?  ";
 			Connection conn = DB.getConnection();
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			ReviewCountRepDto dto = new ReviewCountRepDto();
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, sightId);
+				pstmt.setInt(1, id);
+				pstmt.setInt(2, sightId);
 				rs =  pstmt.executeQuery();
 			
 				if(rs.next()) {

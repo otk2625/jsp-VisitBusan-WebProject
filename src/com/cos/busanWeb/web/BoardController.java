@@ -99,11 +99,11 @@ public class BoardController extends HttpServlet {
 			
 			
 			
-			request.setAttribute("star5", reviewService.별점개스(5));
-			request.setAttribute("star4", reviewService.별점개스(4));
-			request.setAttribute("star3", reviewService.별점개스(3));
-			request.setAttribute("star2", reviewService.별점개스(2));
-			request.setAttribute("star1", reviewService.별점개스(1));
+			request.setAttribute("star5", reviewService.별점개스(5,id));
+			request.setAttribute("star4", reviewService.별점개스(4,id));
+			request.setAttribute("star3", reviewService.별점개스(3,id));
+			request.setAttribute("star2", reviewService.별점개스(2,id));
+			request.setAttribute("star1", reviewService.별점개스(1,id));
 			
 			
 			

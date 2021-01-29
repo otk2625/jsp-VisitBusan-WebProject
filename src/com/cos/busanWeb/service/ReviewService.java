@@ -33,9 +33,9 @@ public class ReviewService {
 		return dao.countReview(sightId);
 	}
 
-	public int 별점개스(int i) {
+	public int 별점개스(int i, int id) {
 		// TODO Auto-generated method stub
-		return dao.countStar(i);
+		return dao.countStar(i,id);
 	}
 	
 	
