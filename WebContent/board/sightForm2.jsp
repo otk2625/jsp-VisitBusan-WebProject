@@ -81,7 +81,7 @@
 <!-- 검색 바 end -->
 
 <div align="right" style="margin-right: 80px">
-	<a href="" class="text-dark">조회순</a> <a href="" class="text-dark">리뷰순</a>
+	<a href="<%=request.getContextPath()%>/board?cmd=sightForm2&page=0" class="text-dark">조회순</a> <a href="<%=request.getContextPath()%>/board?cmd=sightForm2ByReview&page=0" class="text-dark">리뷰순</a>
 </div>
 
 <hr>

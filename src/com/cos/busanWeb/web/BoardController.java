@@ -83,6 +83,28 @@ public class BoardController extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("board/sightForm2.jsp");
 			dispatcher.forward(request, response);
 			
+		}else if(cmd.equals("sightForm2ByReview")) {
+
+			int page = Integer.parseInt(request.getParameter("page"));
+			
+			List<SightRepDto> list = boardService.리뷰순으로뿌리기(page);
+			int 개수 = (int) Math.ceil(boardService.목록개수() / 16);
+			
+			System.out.println(개수);
+			
+			if (page == 개수) {
+				request.setAttribute("nextEnd", true);
+			}
+
+			if (page == 0) {
+				request.setAttribute("preEnd", true);
+			}
+			
+			request.setAttribute("sightlist", list);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("board/sightForm2.jsp");
+			dispatcher.forward(request, response);
+			
 		}
 		
 		else if(cmd.equals("detail")) {

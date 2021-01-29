@@ -152,6 +152,11 @@ public class BoardService {
 		// TODO Auto-generated method stub
 		return dao.countBySearch(keyword);
 	}
+
+	public List<SightRepDto> 리뷰순으로뿌리기(int page) {
+		// TODO Auto-generated method stub
+		return dao.findByReviewCount(page);
+	}
 	
 
 }
