@@ -11,14 +11,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 600px;
    
 
 }
 
 .login-box{
-    width: 320px;
-    height: 300px;
+    width: 500px;
+    height: 380px;
     background: #ffffff;
     padding: 60px 30px;
     border-radius: 5px;
@@ -102,7 +102,7 @@ border-color:#6fd653;
 </div>
 
 <hr>
-
+<div class="container pt-5" style="text-align: center;"><h1>Visit Busan에 오신 것을 환영합니다</h1></div>
 <div class="login-body">
 <div class="login-box">
         <h1>login</h1>
