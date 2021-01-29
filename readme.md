@@ -1,4 +1,30 @@
-## 테이블구조
+# JSP VisitBusan Web 프로젝트
+
+## 환경
+- JDK1.8
+- Tomcat9.0
+- STS 툴
+- MySQL8.0
+- Windows
+- Postman
+- lombok.jar
+- jstl-1.2.jar
+- gson.jar(json파싱)
+- 인코딩 utf-8
+- git
+
+## MySQL 데이터베이스 생성 및 사용자 생성
+
+- 사용자 생성 및 DB생성
+
+```sql
+create user 'visituser'@'%' identified by 'bitc5600';
+grant all privileges on *.* to 'visituser'@'%';
+create database visitdb;
+```
+
+- 테이블구조
+
 ```sql
 CREATE TABLE user(
     id int primary key auto_increment,
