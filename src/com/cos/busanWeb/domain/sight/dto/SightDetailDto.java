@@ -17,4 +17,5 @@ public class SightDetailDto {
 	private String mainImg;
 	private int readCount;
 	private int likeCount;
+	private int reviewCount;
 }

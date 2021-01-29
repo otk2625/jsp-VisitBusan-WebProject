@@ -385,13 +385,13 @@ body::before {
 
 			<div class="viewCount">
 				<div class="readView">
-					<img src="images/read.png"> : ${dto.readCount }
+					<img src="images/read.png"><b> : ${dto.readCount }</b>
 				</div>
 				<div class="likeView">
-					<img src="images/like.png"> : ${dto.likeCount }
+					<img src="images/like.png"><b> : ${dto.likeCount }</b>
 				</div>
 				<div class="replyView">
-					<img src="images/reply.png"> : 0
+					<img src="images/reply.png"><b> ${dto.reviewCount }</b>
 				</div>
 			</div>
 
@@ -445,15 +445,28 @@ body::before {
 										class="bg-white rounded shadow-sm p-4 mb-4 clearfix graph-star-rating">
 										<h5 class="mb-0 mb-4">평가 및 리뷰</h5>
 										<div class="graph-star-rating-header">
-											<div class="star-rating">
-												<a href="#"><i class="icofont-ui-rating active"></i></a> <a
-													href="#"><i class="icofont-ui-rating active"></i></a> <a
-													href="#"><i class="icofont-ui-rating active"></i></a> <a
-													href="#"><i class="icofont-ui-rating active"></i></a> <a
-													href="#"><i class="icofont-ui-rating"></i></a> <b
-													class="text-black ml-2">평가한 개수적는판</b>
-											</div>
-											<p class="text-black mb-4 mt-2">여기 평가점수 평균내는판</p>
+											
+											<c:set var="avg" value="${avg}"  />
+											<div class="starRev2">
+														<%
+														
+														System.out.println(pageContext.getAttribute("avg"));	
+														double b = (double)(pageContext.getAttribute("avg")) ;
+														int aa = (int)b;
+														for(int i=0; i<aa; i++){%>
+														<span class="starR2 on " >별</span>
+
+														<% } %>
+														<%for(int j = 0; j < 5-aa; j++){%>
+															<span class="starR2" >별</span>
+														<%}%>
+													<b
+													class="text-black ml-2"> ${count}</b>
+														</div>
+											
+											<br>
+											<b class="text-black mb-4 mt-2">평군점수 : ${avg}</b>
+											<br>
 										</div>
 										<div class="graph-star-rating-body">
 											<div class="rating-list">
@@ -510,7 +523,7 @@ body::before {
 											</div>
 										</div>
 										<div class="graph-star-rating-footer text-center mt-3 mb-3">
-											<button type="button" class="btn btn-outline-primary btn-sm"></button>
+											<button type="button" class="btn btn-outline-primary btn-sm">이 구역의 별점 수치는?</button>
 										</div>
 									</div>
 									<div
@@ -526,17 +539,16 @@ body::before {
 											<div class="reviews-members pt-4 pb-4">
 												<div class="media">
 													<a href="#"><img alt="Generic placeholder image"
-														src="http://bootdey.com/img/Content/avatar/avatar1.png"
+														src="https://lh3.googleusercontent.com/proxy/lWhV5caBDIZK6UWJxO1Pn_4Dd5qgkegOvMF-R7y5zUu7WDyGLBL7JjMRsp0pVJwBzGJ1DQsuE-gdbrdQIeCp4VW7Swce8kQ_Jb26eJpiQSfY7RbMsA3RzeEZfaHSthVJYgXXlO7wlgxbkWGuc1jdDP59V7KrYPZCavq4C4Tlkds"
 														class="mr-3 rounded-pill"></a>
 													<div class="media-body">
 														<div class="reviews-members-header">
 														<c:set var="likePoint" value="${review.likePoint}"  />
 														<div class="starRev2 float-right">
 														<%
-														String star = (String)(pageContext.getAttribute("likePoint"));
-														System.out.println("star : " + star);
-														int a = 2;
 														
+														int a = (int)pageContext.getAttribute("likePoint");
+
 														for(int i=0; i<a; i++){%>
 														<span class="starR2 on " >별</span>
 
@@ -544,25 +556,16 @@ body::before {
 														<%for(int j = 0; j < 5-a; j++){%>
 															<span class="starR2" >별</span>
 														<%}%>
-														
-														
-														
+													
 														</div>
-															<!-- <div class="starRev2 float-right">
-																<span class="starR2 on " >별1</span> <span
-																	class="starR2" >별2</span> <span
-																	class="starR2" >별3</span> <span
-																	class="starR2" >별4</span> <span
-																	class="starR2" >별5</span>
 
-															</div> -->
 															<h6 class="mb-1">
 																<a class="text-black" href="#">${review.username} </a>
 															</h6>
 															<p class="text-gray">${review.createDate}</p>
 														</div>
 														<div class="reviews-members-body">
-															<p>${review.title}</p>
+															<b>${review.title}</b>
 															<br>
 															<p>${review.content}</p>
 														</div>
@@ -629,8 +632,8 @@ body::before {
 												</c:when>
 												<c:otherwise>
 
-													<a class="btn btn-primary pull-right"
-														onClick="alert('로그인 후 이용가능합니다')">댓글쓰기</a>
+													<a class="btn btn-primary btn-sm" type="button"
+														onClick="alert('로그인 후 이용가능합니다')">등록</a>
 												</c:otherwise>
 											</c:choose>
 										</div>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cos.busanWeb.domain.review.dto.ReviewCountRepDto;
 import com.cos.busanWeb.domain.review.dto.ReviewDto;
 import com.cos.busanWeb.domain.sight.Item;
 import com.cos.busanWeb.domain.sight.dto.SightDetailDto;
@@ -87,6 +88,12 @@ public class BoardController extends HttpServlet {
 			SightDetailDto dto = boardService.글상세보기(id); 
 			List<Item> list = boardService.글상세뿌리기(id);
 			List<ReviewDto> reviews = reviewService.댓글목록(id);
+			
+			ReviewCountRepDto count  = reviewService.댓글개수(id);
+			System.out.println(count.get개수()+", "+count.get평균());
+			request.setAttribute("count", count.get개수());
+			request.setAttribute("avg", count.get평균());
+			
 			
 			if(dto == null) {
 				Script.back(response, "상세보기에 실패하였습니다.");

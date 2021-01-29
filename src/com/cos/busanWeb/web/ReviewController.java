@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cos.busanWeb.domain.CommonRespDto;
 import com.cos.busanWeb.domain.review.ReviewDao;
+import com.cos.busanWeb.domain.review.dto.ReviewCountRepDto;
 import com.cos.busanWeb.domain.review.dto.ReviewDto;
 import com.cos.busanWeb.domain.review.dto.ReviewReqDto;
 import com.cos.busanWeb.domain.sight.Item;
@@ -60,7 +61,9 @@ public class ReviewController extends HttpServlet {
 
 			int result = reviewService.댓글쓰기(dto);
 			List<ReviewDto> review = reviewService.댓글목록(dto.getSightId());
-
+			
+			
+			
 			// 공통응답Dto를 사용해서 통신값 전달
 			CommonRespDto<List<ReviewDto>> commonRespDto = new CommonRespDto<>();
 			commonRespDto.setStatusCode(result); // 1, -1
