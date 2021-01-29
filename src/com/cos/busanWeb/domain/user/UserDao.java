@@ -74,6 +74,9 @@ public class UserDao {
 						.build();
 				return user;
 			}
+			
+			double aa = 4.5;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally { // 무조건 실행

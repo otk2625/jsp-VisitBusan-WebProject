@@ -82,12 +82,17 @@ public class SightDao {
 		}
 		
 		public SightDetailDto findById(int id){
-			StringBuffer sb = new StringBuffer();
-			sb.append("select id, title, subTitle, content, mainImg, readCount, likeCount ");
-			sb.append("from sight ");
-			sb.append("where id = ?");
 
+
+			
+			StringBuffer sb = new StringBuffer();
+			sb.append("SELECT s.id, s.title, s.subtitle, s.content, s.mainimg, s.readCount, s.likeCount ,count(r.id) as reviewCount "
+					+ "From review r right OUTER JOIN sight s "
+					+ "on s.id = r.sightId "
+					+ "where s.id = ? ");
 			String sql = sb.toString();
+			
+
 			Connection conn = DB.getConnection();
 			PreparedStatement pstmt = null;
 			ResultSet rs  = null;
@@ -105,6 +110,7 @@ public class SightDao {
 					dto.setMainImg(rs.getString("mainImg"));
 					dto.setReadCount(rs.getInt("readCount"));
 					dto.setLikeCount(rs.getInt("likeCount"));
+					dto.setReviewCount(rs.getInt("reviewCount"));
 					return dto;
 				}
 			} catch (Exception e) {
