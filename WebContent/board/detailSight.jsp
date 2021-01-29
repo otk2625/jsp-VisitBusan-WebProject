@@ -80,15 +80,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-body::before {
-	content: '';
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: -1;
-	width: 100%;
-	height: 100%;
-}
+
 
 #tab-menu {
 	margin-top: 100px;
@@ -439,8 +431,9 @@ body::before {
 			</div>
 
 			<div>
-				<a href="/busanWeb/board?cmd=like&id=${dto.id}">좋아요 :
-					${dto.likeCount }</a>
+				<a class="btn btn-danger float-right" onClick="like(${dto.id})"
+				 <%-- href="/busanWeb/board?cmd=like&id=${dto.id}" --%> type="butten">좋아요
+					</a>
 			</div>
 
 		</div>
@@ -735,10 +728,11 @@ body::before {
 			</div>
 		</div>
 	</div>
+	</div>
 </c:forEach>
 
 
-<%@ include file="../layout/footer.jsp"%>
+
 
 
 <script>
@@ -774,6 +768,22 @@ $('.starRev span').click(function(){
 function mark(star) {
 	document.getElementById("star").value = star;
 	console.log($("#star").val());
+}
+function like(id) {
+	console.log(id);
+	$.ajax({
+		type: "post",
+		url: "/busanWeb/board?cmd=like&id="+id,
+		contentType: "application/json; charset=utf-8",
+		dataType: "json"
+	}).done(function(result){
+		if(result.statusCode == 1){
+
+			location.reload(); 
+		}else{
+			alert("좋아요 실패");
+		}
+	});
 }
 	
 function replySave(userId, sightId){
@@ -816,5 +826,4 @@ var marker = new naver.maps.Marker({
 });
 	
 </script>
-</body>
-</html>
+<%@ include file="../layout/footer.jsp"%>

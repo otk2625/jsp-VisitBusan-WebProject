@@ -95,6 +95,13 @@ public class BoardService {
 		}
 		
 	}
+	public int like(int id) {
+		int like = dao.updatelikeCount(id);
+		
+		return like;
+		
+	}
+	
 	
 	public List<Item> 글상세뿌리기(int id) throws IOException {
 		StringBuilder urlBuilder = new StringBuilder(

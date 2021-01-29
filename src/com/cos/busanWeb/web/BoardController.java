@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cos.busanWeb.domain.CommonRespDto;
 import com.cos.busanWeb.domain.review.dto.ReviewCountRepDto;
 import com.cos.busanWeb.domain.review.dto.ReviewDto;
 import com.cos.busanWeb.domain.sight.Item;
@@ -20,6 +21,7 @@ import com.cos.busanWeb.domain.sight.dto.sightDto;
 import com.cos.busanWeb.service.BoardService;
 import com.cos.busanWeb.service.ReviewService;
 import com.cos.busanWeb.util.Script;
+import com.google.gson.Gson;
 
 //http://localhost:8080/blog/board
 @WebServlet("/board")
@@ -108,19 +110,26 @@ public class BoardController extends HttpServlet {
 		} 
 		
 		else if (cmd.equals("like")) {
+			Gson gson = new Gson();
+			System.out.println("이게 : " + request.getParameter("id")); 
 			int id = Integer.parseInt(request.getParameter("id"));
-			 
-			SightDetailDto dto = boardService.좋아요(id); 
-			List<Item> list = boardService.글상세뿌리기(id);
+//			SightDetailDto dto = boardService.좋아요(id); 
+//			List<Item> list = boardService.글상세뿌리기(id);
+			int like = boardService.like(id); 
 			
-			if(dto == null) {
-				Script.back(response, "좋아요에 실패하였습니다.");
-			} else {
-				request.setAttribute("detail", list);
-				request.setAttribute("dto", dto);
-				RequestDispatcher dis = request.getRequestDispatcher("board/detailSight.jsp");
-				dis.forward(request, response);	
-			}
+			CommonRespDto<List<ReviewDto>> commonRespDto = new CommonRespDto<>();
+			commonRespDto.setStatusCode(like);
+			String responseData = gson.toJson(commonRespDto);
+			System.out.println("responseData : " + responseData);
+			Script.responseData(response, responseData);
+//			if(dto == null) {
+//				Script.back(response, "좋아요에 실패하였습니다.");
+//			} else {
+//				request.setAttribute("detail", list);
+//				request.setAttribute("dto", dto);
+//				RequestDispatcher dis = request.getRequestDispatcher("board/detailSight.jsp");
+//				dis.forward(request, response);	
+//			}
 			
 		}else if (cmd.equals("search")) {
 			int page = Integer.parseInt(request.getParameter("page"));  // 최초 : 0, Next : 1, Next: 2
