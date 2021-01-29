@@ -440,9 +440,18 @@ body {
 		<p style="font-size: xx-large; color: white;">부산에 가면</p>
 	</div>
 </div>
-<hr>
+<section id="nav2">
+	<div class="navInner boxing2">
+		<div class="left">
+			<ul style="list-style: none;">
+				<li class="home"><a href="<%=request.getContextPath()%>/board?cmd=main&page=0" title="부산에가면으로 갑니다">부산에가면</a></li>
+				<li class="depth1"><a href="<%=request.getContextPath()%>/board?cmd=sightForm2&page=0" title="명소으로 갑니다">명소</a></li>
+				<li class="depth2">명소상세보기</li>
+			</ul>
+		</div>
 
-
+	</div>
+</section>
 
 
 <div class="container">

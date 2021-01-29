@@ -94,14 +94,24 @@ border-color:#6fd653;
 }
 </Style>
 
-<div class="outer">
+<div class="outerProfile">
 
 	<div class="jb-text">
-		<p style="font-size: xx-large;  color: white;">부산에 가면</p>
+		<p style="font-size: xx-large;  color: white;">나의 여행</p>
 	</div>
 </div>
+<section id="nav2">
+	<div class="navInner boxing2">
+		<div class="left">
+			<ul style="list-style: none;">
+				<li class="home"><a href="<%=request.getContextPath()%>/board?cmd=main&page=0" title="부산에가면으로 갑니다">부산에가면</a></li>
+				<li class="depth2"><a href="<%=request.getContextPath()%>/user?cmd=loginForm" title="로그인으로 갑니다">로그인</a></li>
+			</ul>
+		</div>
 
-<hr>
+	</div>
+</section>
+<br>
 <div class="container pt-5" style="text-align: center;"><h1>Visit Busan에 오신 것을 환영합니다</h1></div>
 <div class="login-body">
 <div class="login-box">
