@@ -98,6 +98,15 @@ public class BoardController extends HttpServlet {
 			request.setAttribute("avg", count.get평균());
 			
 			
+			
+			request.setAttribute("star5", reviewService.별점개스(5));
+			request.setAttribute("star4", reviewService.별점개스(4));
+			request.setAttribute("star3", reviewService.별점개스(3));
+			request.setAttribute("star2", reviewService.별점개스(2));
+			request.setAttribute("star1", reviewService.별점개스(1));
+			
+			
+			
 			if(dto == null) {
 				Script.back(response, "상세보기에 실패하였습니다.");
 			} else {

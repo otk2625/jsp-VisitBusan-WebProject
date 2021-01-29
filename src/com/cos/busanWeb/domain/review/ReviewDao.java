@@ -153,5 +153,31 @@ public class ReviewDao {
 			
 			return null;
 		}
+		public int countStar(int sightId) {
+			String sql = "select count(likePoint) as 개수 from review where likePoint=? ";
+			Connection conn = DB.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			ReviewCountRepDto dto = new ReviewCountRepDto();
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, sightId);
+				rs =  pstmt.executeQuery();
+			
+				if(rs.next()) {
+					
+					int 개수 = rs.getInt("개수");
+					
+					return 개수;
+				}
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally { // 무조건 실행
+				DB.close(conn, pstmt);
+			}
+			return 0;
+		}
 
 }

@@ -1,3 +1,5 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.text.Format"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
@@ -431,8 +433,8 @@ body {
 			</div>
 
 			<div>
-				<a class="btn btn-danger float-right" onClick="like(${dto.id})"
-				 <%-- href="/busanWeb/board?cmd=like&id=${dto.id}" --%> type="butten">좋아요
+				<a class="btn btn-danger float-right" onClick="like(${dto.id})" style="color: white;"
+				 <%-- href="/busanWeb/board?cmd=like&id=${dto.id}" --%> type="button">좋아요
 					</a>
 			</div>
 
@@ -529,11 +531,26 @@ body {
 										<div class="graph-star-rating-header">
 											
 											<c:set var="avg" value="${avg}"  />
+											<c:set var="count" value="${count}"  />
+											<c:set var="star5" value="${star5}"  />
+											<c:set var="star4" value="${star4}"  />
+											<c:set var="star3" value="${star3}"  />
+											<c:set var="star2" value="${star2}"  />
+											<c:set var="star1" value="${star1}"  />
 											<div class="starRev2">
 														<%
+														int star5 = (int)pageContext.getAttribute("star5");
+														int star4 = (int)pageContext.getAttribute("star4");
+														int star3 = (int)pageContext.getAttribute("star3");
+														int star2 = (int)pageContext.getAttribute("star2");
+														int star1 = (int)pageContext.getAttribute("star1");
+														
+														int count = (int)pageContext.getAttribute("count");
 														
 														System.out.println(pageContext.getAttribute("avg"));	
 														double b = (double)(pageContext.getAttribute("avg")) ;
+														DecimalFormat format = new DecimalFormat("0.0");
+														DecimalFormat format2 = new DecimalFormat("0");
 														int aa = (int)b;
 														for(int i=0; i<aa; i++){%>
 														<span class="starR2 on " >별</span>
@@ -547,7 +564,7 @@ body {
 														</div>
 											
 											<br>
-											<b class="text-black mb-4 mt-2">평군점수 : ${avg}</b>
+											<b class="text-black mb-4 mt-2">평군점수 : <%out.print(format.format(b)); %></b>
 											<br>
 										</div>
 										<div class="graph-star-rating-body">
@@ -555,53 +572,66 @@ body {
 												<div class="rating-list-left text-black">5 Star</div>
 												<div class="rating-list-center">
 													<div class="progress">
-														<div style="width: 90% /*퍼센트집어넣는칸*/" aria-valuemax="5"
+														<div style="width: <%out.print(star5/b*100); %>% /*퍼센트집어넣는칸*/" aria-valuemax="5"
 															aria-valuemin="0" aria-valuenow="5" role="progressbar"
 															class="progress-bar bg-primary">
 															<span class="sr-only">80% Complete (danger)</span>
 														</div>
 													</div>
 												</div>
-												<div class="rating-list-right text-black">56%</div>
+												<div class="rating-list-right text-black"><%out.print(format2.format(star5/b*100)); %>%</div>
 											</div>
 											<div class="rating-list">
 												<div class="rating-list-left text-black">4 Star</div>
 												<div class="rating-list-center">
 													<div class="progress">
-														<div style="width: 23%" aria-valuemax="5"
+														<div style="width: <%out.print(star4/b*100); %>%" aria-valuemax="5"
 															aria-valuemin="0" aria-valuenow="5" role="progressbar"
 															class="progress-bar bg-primary">
 															<span class="sr-only">80% Complete (danger)</span>
 														</div>
 													</div>
 												</div>
-												<div class="rating-list-right text-black">23%</div>
+												<div class="rating-list-right text-black"><%out.print(format2.format(star4/b*100)); %>%</div>
 											</div>
 											<div class="rating-list">
 												<div class="rating-list-left text-black">3 Star</div>
 												<div class="rating-list-center">
 													<div class="progress">
-														<div style="width: 11%" aria-valuemax="5"
+														<div style="width: <%out.print(star3/b*100); %>%" aria-valuemax="5"
 															aria-valuemin="0" aria-valuenow="5" role="progressbar"
 															class="progress-bar bg-primary">
 															<span class="sr-only">80% Complete (danger)</span>
 														</div>
 													</div>
 												</div>
-												<div class="rating-list-right text-black">11%</div>
+												<div class="rating-list-right text-black"><%out.print(format2.format(star3/b*100)); %>%</div>
 											</div>
 											<div class="rating-list">
 												<div class="rating-list-left text-black">2 Star</div>
 												<div class="rating-list-center">
 													<div class="progress">
-														<div style="width: 2%" aria-valuemax="5" aria-valuemin="0"
+														<div style="width: <%out.print(star2/b*100); %>%" aria-valuemax="5" aria-valuemin="0"
 															aria-valuenow="5" role="progressbar"
 															class="progress-bar bg-primary">
 															<span class="sr-only">80% Complete (danger)</span>
 														</div>
 													</div>
 												</div>
-												<div class="rating-list-right text-black">02%</div>
+												<div class="rating-list-right text-black"><%out.print(format2.format(star2/b*100)); %>%</div>
+											</div>
+											<div class="rating-list">
+												<div class="rating-list-left text-black">1 Star</div>
+												<div class="rating-list-center">
+													<div class="progress">
+														<div style="width: <%out.print(star1/b*100); %>%" aria-valuemax="5"
+															aria-valuemin="0" aria-valuenow="5" role="progressbar"
+															class="progress-bar bg-primary">
+															<span class="sr-only">80% Complete (danger)</span>
+														</div>
+													</div>
+												</div>
+												<div class="rating-list-right text-black"><%out.print(format2.format(star1/b*100)); %>%</div>
 											</div>
 										</div>
 										<div class="graph-star-rating-footer text-center mt-3 mb-3">
