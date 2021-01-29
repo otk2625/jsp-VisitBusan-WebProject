@@ -3,14 +3,24 @@
 <%@ include file="../layout/header.jsp"%>
 
 
-<div class="outer">
+<div class="outerProfile">
 
 	<div class="jb-text">
-		<p style="font-size: xx-large;  color: white;">부산에 가면</p>
+		<p style="font-size: xx-large;  color: white;">나의 여행</p>
 	</div>
 </div>
+<section id="nav2">
+	<div class="navInner boxing2">
+		<div class="left">
+			<ul style="list-style: none;">
+				<li class="home"><a href="<%=request.getContextPath()%>/board?cmd=main&page=0" title="부산에가면으로 갑니다">부산에가면</a></li>
+				<li class="depth2"><a href="<%=request.getContextPath()%>/user?cmd=joinForm" title="회원가입으로 갑니다">회원가입</a></li>
+			</ul>
+		</div>
 
-<hr>
+	</div>
+</section>
+
 
 <div class="signup-form">
 	<form action="/busanWeb/user?cmd=join" method="post" onsubmit="return valid()">
