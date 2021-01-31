@@ -432,6 +432,11 @@ body {
 .link-container ul li a {
 	text-decoration: none;
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> brchHo
 </style>
 
 
@@ -509,18 +514,67 @@ body {
 		<hr />
 		<div id="tab-cont">
 
+			<!-- 상세정보 -->
 			<div>
 			<h3>${detail.TITLE }</h3>
 			<hr>
 				<p class="p1">${detail.ITEMCNTNTS }</p>
 				<img alt="" src="${detail.MAINIMGTHUMB }">
 			</div>
+			
+			<!-- 지도 -->
 			<div>
+<<<<<<< HEAD
 
 				<div id="map-lat" style="display: none;">${detail.LAT }</div>
 				<div id="map-lng" style="display: none;">${detail.LNG }</div>
 				<div id="map" style="width: 1200px; height: 400px;"></div>
 
+=======
+			
+			<div id="map-lat" style="display: none;">${detail.LAT }</div>
+			<div id="map-lng" style="display: none;">${detail.LNG }</div>
+			<div id="map" style="width:100%;height:350px;"></div>
+			
+			</div>
+
+			<!-- 이용 안내 -->
+			<div class="link-container">
+				<h2 style="font-size: 20px">
+					<b>주소</b>
+				</h2>
+				<ul>
+					<li><a href="#" style="font-size: 15px">${detail.ADDR1 }</a>
+				</ul>
+
+				<h2 style="font-size: 20px">
+					<b>전화번호</b>
+				</h2>
+				<ul>
+					<li><a href="#" style="font-size: 15px">${detail.CNTCTTEL }</a>
+				</ul>
+
+				<h2 style="font-size: 20px">
+					<b>홈페이지</b>
+				</h2>
+				<ul>
+					<li><a href="${detail.HOMEPAGEURL }" style="font-size: 15px">${detail.HOMEPAGEURL }</a>
+				</ul>
+
+				<h2 style="font-size: 20px">
+					<b>교통정보</b>
+				</h2>
+				<ul>
+					<li><a href="#" style="font-size: 15px">${detail.TRFCINFO }</a>
+				</ul>
+
+				<h2 style="font-size: 20px">
+					<b>장애인 시설</b>
+				</h2>
+				<ul>
+					<li><a href="#" style="font-size: 15px">${detail.MIDDLESIZERM1 }</a>
+				</ul>
+>>>>>>> brchHo
 			</div>
 
 			<div>
@@ -897,10 +951,14 @@ body {
 			</div>
 		</div>
 	</div>
+</div>
 </c:forEach>
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> brchHo
 
 
 <script>
@@ -979,10 +1037,12 @@ function replySave(userId, sightId){
 			}
 		});
 	};
-	$("#map-lat").text(), $("#map-lng").text()
+
 
 	
+	/* parseFloat($("#map-lat").text()), parseFloat($("#map-lng").text()) */
 	
+<<<<<<< HEAD
 	var HOME_PATH = window.HOME_PATH || '.';
 
 var cityhall = new naver.maps.LatLng($("#map-lat").text(), $("#map-lng").text()),
@@ -1007,8 +1067,30 @@ var contentString = [
 
 var infowindow = new naver.maps.InfoWindow({
     content: contentString
-});
+=======
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 2 // 지도의 확대 레벨
+    };
 
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+var iwContent = '<div style="padding:5px;">Hello World!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+    iwPosition = new kakao.maps.LatLng(33.450701, 126.570667), //인포윈도우 표시 위치입니다
+    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+// 인포윈도우를 생성하고 지도에 표시합니다
+var infowindow = new kakao.maps.InfoWindow({
+    map: map, // 인포윈도우가 표시될 지도
+    position : iwPosition, 
+    content : iwContent,
+    removable : iwRemoveable
+>>>>>>> brchHo
+});
+setTimeout(function(){ map.relayout(); }, 1000);
+
+<<<<<<< HEAD
 naver.maps.Event.addListener(marker, "click", function(e) {
     if (infowindow.getMap()) {
         infowindow.close();
@@ -1021,3 +1103,11 @@ infowindow.open(map, marker);
 	
 </script>
 <%@ include file="../layout/footer.jsp"%>
+=======
+</script>
+
+<%@ include file="../layout/footer.jsp"%>
+
+</body>
+</html>
+>>>>>>> brchHo
