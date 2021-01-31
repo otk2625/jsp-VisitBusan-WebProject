@@ -432,11 +432,6 @@ body {
 .link-container ul li a {
 	text-decoration: none;
 }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> brchHo
 </style>
 
 
@@ -524,58 +519,15 @@ body {
 			
 			<!-- 지도 -->
 			<div>
-<<<<<<< HEAD
 
-				<div id="map-lat" style="display: none;">${detail.LAT }</div>
-				<div id="map-lng" style="display: none;">${detail.LNG }</div>
-				<div id="map" style="width: 1200px; height: 400px;"></div>
-
-=======
 			
 			<div id="map-lat" style="display: none;">${detail.LAT }</div>
 			<div id="map-lng" style="display: none;">${detail.LNG }</div>
-			<div id="map" style="width:100%;height:350px;"></div>
+<div id="map" style="width:1200px;height:400px;"></div>
 			
 			</div>
 
-			<!-- 이용 안내 -->
-			<div class="link-container">
-				<h2 style="font-size: 20px">
-					<b>주소</b>
-				</h2>
-				<ul>
-					<li><a href="#" style="font-size: 15px">${detail.ADDR1 }</a>
-				</ul>
-
-				<h2 style="font-size: 20px">
-					<b>전화번호</b>
-				</h2>
-				<ul>
-					<li><a href="#" style="font-size: 15px">${detail.CNTCTTEL }</a>
-				</ul>
-
-				<h2 style="font-size: 20px">
-					<b>홈페이지</b>
-				</h2>
-				<ul>
-					<li><a href="${detail.HOMEPAGEURL }" style="font-size: 15px">${detail.HOMEPAGEURL }</a>
-				</ul>
-
-				<h2 style="font-size: 20px">
-					<b>교통정보</b>
-				</h2>
-				<ul>
-					<li><a href="#" style="font-size: 15px">${detail.TRFCINFO }</a>
-				</ul>
-
-				<h2 style="font-size: 20px">
-					<b>장애인 시설</b>
-				</h2>
-				<ul>
-					<li><a href="#" style="font-size: 15px">${detail.MIDDLESIZERM1 }</a>
-				</ul>
->>>>>>> brchHo
-			</div>
+			
 
 			<div>
 				<section class="py-5 headerprofile">
@@ -942,24 +894,14 @@ body {
 							</div>
 						</div>
 					</div>
-<<<<<<< HEAD
-				</div>
-=======
-
->>>>>>> 938ab828820543271ce5a162edf288acf65931bb
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </c:forEach>
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> brchHo
-
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=debe45815b202892f970e43978920753
+"></script>
 
 <script>
 $('#summernote').summernote({
@@ -1039,75 +981,60 @@ function replySave(userId, sightId){
 	};
 
 
+
+
+
 	
-	/* parseFloat($("#map-lat").text()), parseFloat($("#map-lng").text()) */
-	
-<<<<<<< HEAD
-	var HOME_PATH = window.HOME_PATH || '.';
 
-var cityhall = new naver.maps.LatLng($("#map-lat").text(), $("#map-lng").text()),
-    map = new naver.maps.Map('map', {
-        center: cityhall.destinationPoint(0, 500),
-        zoom: 15
-    }),
-    marker = new naver.maps.Marker({
-        map: map,
-        position: cityhall
-    });
 
-var contentString = [
-        '<div class="iw_inner">',
-        '   <h3>${dto.title}</h3>',
-        '   <p>${dto.subTitle}<br />',
-        '		<br/>',
-        '       <a href="http://map.naver.com/" target="_blank"><b>길찾기</b>/</a>',
-        '   </p>',
-        '</div>'
-    ].join('');
 
-var infowindow = new naver.maps.InfoWindow({
-    content: contentString
-=======
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 2 // 지도의 확대 레벨
+        center: new kakao.maps.LatLng(parseFloat($("#map-lat").text()), parseFloat($("#map-lng").text())), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
     };
+    
+var map = new kakao.maps.Map(mapContainer, mapOption);
 
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-var iwContent = '<div style="padding:5px;">Hello World!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-    iwPosition = new kakao.maps.LatLng(33.450701, 126.570667), //인포윈도우 표시 위치입니다
-    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
-// 인포윈도우를 생성하고 지도에 표시합니다
+
+
+// 마커가 표시될 위치입니다 
+var markerPosition  = new kakao.maps.LatLng(parseFloat($("#map-lat").text()), parseFloat($("#map-lng").text())); 
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+
+var iwContent = '<div>${dto.title}<br><a href="https://map.kakao.com/link/map/${dto.title},${dto.sightlat},${dto.sightlng}" style="color:blue" target="_blank">큰지도보기</a><a href="https://map.kakao.com/link/to/${dto.title},${dto.sightlat},${dto.sightlng}" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+    iwPosition = new kakao.maps.LatLng(parseFloat($("#map-lat").text()), parseFloat($("#map-lng").text())); //인포윈도우 표시 위치입니다
+
+// 인포윈도우를 생성합니다
 var infowindow = new kakao.maps.InfoWindow({
-    map: map, // 인포윈도우가 표시될 지도
     position : iwPosition, 
-    content : iwContent,
-    removable : iwRemoveable
->>>>>>> brchHo
+    content : iwContent 
 });
-setTimeout(function(){ map.relayout(); }, 1000);
+  
+// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+infowindow.open(map, marker); 
 
-<<<<<<< HEAD
-naver.maps.Event.addListener(marker, "click", function(e) {
-    if (infowindow.getMap()) {
-        infowindow.close();
-    } else {
-        infowindow.open(map, marker);
-    }
-});
+setTimeout(function() {
+    map.relayout();
+    map.setCenter(new kakao.maps.LatLng(parseFloat($("#map-lat").text()), parseFloat($("#map-lng").text())));
+    // map.setLevel(2); 필요하면 레벨조정
+}, 2000);
 
-infowindow.open(map, marker);
-	
-</script>
-<%@ include file="../layout/footer.jsp"%>
-=======
+
+
+		
 </script>
 
-<%@ include file="../layout/footer.jsp"%>
+<%@ include file="../layout/footer.jsp"%>>
 
 </body>
 </html>
->>>>>>> brchHo

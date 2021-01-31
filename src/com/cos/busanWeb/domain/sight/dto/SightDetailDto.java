@@ -18,4 +18,6 @@ public class SightDetailDto {
 	private int readCount;
 	private int likeCount;
 	private int reviewCount;
+	private double sightlat;
+	private double sightlng;
 }

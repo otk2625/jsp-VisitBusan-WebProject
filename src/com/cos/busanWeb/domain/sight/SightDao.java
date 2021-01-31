@@ -35,7 +35,8 @@ public class SightDao {
 				SightRepDto dto = SightRepDto.builder().id(rs.getInt("id")).title(rs.getString("title"))
 						.subTitle(rs.getString("subtitle")).mainImg(rs.getString("mainimg"))
 						.readCount(rs.getInt("s.readCount")).likeCount(rs.getInt("s.likeCount"))
-						.reviewCount(rs.getInt("reviewCount")).build();
+						.reviewCount(rs.getInt("reviewCount"))
+						.build();
 
 				list.add(dto);
 			}
@@ -77,7 +78,7 @@ public class SightDao {
 
 		StringBuffer sb = new StringBuffer();
 		sb.append(
-				"SELECT s.id, s.title, s.subtitle, s.content, s.mainimg, s.readCount, s.likeCount ,count(r.id) as reviewCount "
+				"SELECT s.id, s.title, s.subtitle, s.content, s.mainimg, s.readCount, s.likeCount,s.sightlat, s.sightlng ,count(r.id) as reviewCount "
 						+ "From review r right OUTER JOIN sight s " + "on s.id = r.sightId " + "where s.id = ? ");
 		String sql = sb.toString();
 
@@ -99,6 +100,8 @@ public class SightDao {
 				dto.setReadCount(rs.getInt("readCount"));
 				dto.setLikeCount(rs.getInt("likeCount"));
 				dto.setReviewCount(rs.getInt("reviewCount"));
+				dto.setSightlat(rs.getDouble("sightlat"));
+				dto.setSightlng(rs.getDouble("sightlng"));
 				return dto;
 			}
 		} catch (Exception e) {
@@ -234,7 +237,10 @@ public class SightDao {
 				SightRepDto dto = SightRepDto.builder().id(rs.getInt("id")).title(rs.getString("title"))
 						.subTitle(rs.getString("subtitle")).mainImg(rs.getString("mainimg"))
 						.readCount(rs.getInt("s.readCount")).likeCount(rs.getInt("s.likeCount"))
-						.reviewCount(rs.getInt("reviewCount")).build();
+						.reviewCount(rs.getInt("reviewCount"))
+						.sightlat(rs.getDouble("sightlat"))
+						.sightlng(rs.getDouble("sightlng"))
+						.build();
 
 				list.add(dto);
 			}

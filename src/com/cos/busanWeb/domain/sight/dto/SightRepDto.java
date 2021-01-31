@@ -17,4 +17,6 @@ public class SightRepDto {
 	private int readCount;
 	private int reviewCount;
 	private int likeCount;
+	private double sightlat;
+	private double sightlng;
 }

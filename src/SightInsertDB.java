@@ -87,7 +87,7 @@ public class SightInsertDB {
 				items = db.뿌리기(1, 112);
 				for (int i = 0; i<items.size(); i++) {
 					
-					String sql = "INSERT INTO sight(id,title,subtitle,mainimg) VALUES(?,?,?,?) ";
+					String sql = "INSERT INTO sight(id,title,subtitle,mainimg, sightlat, sightlng) VALUES(?,?,?,?,?,?) ";
 					Connection conn = db.getconn();
 					PreparedStatement pstmt = null;
 					
@@ -96,6 +96,8 @@ public class SightInsertDB {
 					pstmt.setString(2, items.get(i).getMAINTITLE());
 					pstmt.setString(3, items.get(i).getSUBTITLE());
 					pstmt.setString(4, items.get(i).getMAINIMGNORMAL());
+					pstmt.setDouble(5, items.get(i).getLAT());
+					pstmt.setDouble(6, items.get(i).getLNG());
 					
 					int result = pstmt.executeUpdate();
 					System.out.println(result);
