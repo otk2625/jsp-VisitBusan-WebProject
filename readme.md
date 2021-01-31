@@ -39,10 +39,16 @@ CREATE TABLE user(
 CREATE TABLE sight(
     id int primary key,
     title varchar(100) not null unique,
-	readCount int default 0
+    subtitle varchar(100),
+    content longtext,
+    mainimg varchar(100),
+	readCount int default 0,
+    likeCount int default 0,
+    sightlat double,
+    sightlng double
 )  engine=InnoDB default charset=utf8;
 
-CREATE TABLE reply(
+CREATE TABLE review(
     id int primary key auto_increment,
     userId int,
     sightid int,
@@ -50,6 +56,7 @@ CREATE TABLE reply(
     content longtext,
 	likepoint int,
     createDate timestamp,
+	rating int,
     foreign key (userId) references user (id),
     foreign key (sightid) references sight (id)
 )  engine=InnoDB default charset=utf8;
