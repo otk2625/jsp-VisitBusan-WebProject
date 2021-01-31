@@ -731,7 +731,7 @@ body::before {
 						</div>
 					</div>
 				</div>
-
+				</div>
 			</div>
 		</div>
 	</div>
@@ -805,15 +805,41 @@ function replySave(userId, sightId){
 
 	
 	
-	var map = new naver.maps.Map('map', {
-    center: new naver.maps.LatLng($("#map-lat").text(), $("#map-lng").text()),
-    zoom: 15
+	var HOME_PATH = window.HOME_PATH || '.';
+
+var cityhall = new naver.maps.LatLng($("#map-lat").text(), $("#map-lng").text()),
+    map = new naver.maps.Map('map', {
+        center: cityhall.destinationPoint(0, 500),
+        zoom: 15
+    }),
+    marker = new naver.maps.Marker({
+        map: map,
+        position: cityhall
+    });
+
+var contentString = [
+        '<div class="iw_inner">',
+        '   <h3>${dto.title}</h3>',
+        '   <p>${dto.subTitle}<br />',
+        '		<br/>',
+        '       <a href="http://map.naver.com/" target="_blank"><b>길찾기</b>/</a>',
+        '   </p>',
+        '</div>'
+    ].join('');
+
+var infowindow = new naver.maps.InfoWindow({
+    content: contentString
 });
 
-var marker = new naver.maps.Marker({
-    position: new naver.maps.LatLng($("#map-lat").text(), $("#map-lng").text()),
-    map: map
+naver.maps.Event.addListener(marker, "click", function(e) {
+    if (infowindow.getMap()) {
+        infowindow.close();
+    } else {
+        infowindow.open(map, marker);
+    }
 });
+
+infowindow.open(map, marker);
 	
 </script>
 </body>
