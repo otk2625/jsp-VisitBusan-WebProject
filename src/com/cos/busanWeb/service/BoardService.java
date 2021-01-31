@@ -95,6 +95,13 @@ public class BoardService {
 		}
 		
 	}
+	public int like(int id) {
+		int like = dao.updatelikeCount(id);
+		
+		return like;
+		
+	}
+	
 	
 	public List<Item> 글상세뿌리기(int id) throws IOException {
 		StringBuilder urlBuilder = new StringBuilder(
@@ -144,6 +151,11 @@ public class BoardService {
 	public int 검색목록개수(String keyword) {
 		// TODO Auto-generated method stub
 		return dao.countBySearch(keyword);
+	}
+
+	public List<SightRepDto> 리뷰순으로뿌리기(int page) {
+		// TODO Auto-generated method stub
+		return dao.findByReviewCount(page);
 	}
 	
 

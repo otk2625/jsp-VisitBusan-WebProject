@@ -44,13 +44,22 @@
 </Style>
 
 <div class="outerProfile">
-
 	<div class="jb-text">
 		<p style="font-size: xx-large;  color: white;">나의 여행</p>
 	</div>
 </div>
+<section id="nav2">
+	<div class="navInner boxing2">
+		<div class="left">
+			<ul style="list-style: none;">
+				<li class="home"><a href="<%=request.getContextPath()%>/board?cmd=main&page=0" title="부산에가면으로 갑니다">부산에가면</a></li>
+				<li class="depth2"><a href="<%=request.getContextPath()%>/user?cmd=profileForm2" title="나의정보으로 갑니다">나의 정보</a></li>
+			</ul>
+		</div>
 
-<hr>
+	</div>
+</section>
+
 <div class="text-center">
  <h1 class="display-4">마이페이지</h1>
             <p class="font-italic mb-1">여행이란 고독한법...</p>

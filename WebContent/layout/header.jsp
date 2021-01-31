@@ -98,6 +98,81 @@
 
 <!-- footer style -->
 <style>
+/*nav바*/
+.boxing2 { /*overflow:hidden*/
+	
+}
+
+.boxing2>.left {
+	float: left;
+	width: 50%
+}
+
+/* nav */
+#nav2 { /*overflow:hidden;*/
+	width: 100%;
+	height: 51px;
+	line-height: 51px;
+	border-bottom: 1px solid #e0e0e0;;
+}
+
+#nav2 .navInner {
+	max-width: 1200px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+#nav2 ul li {
+	float: left;
+}
+
+#nav2 .left ul { /*overflow:hidden*/
+	
+}
+
+#nav2 .left ul li {
+	color: #9c9c9c;
+	position: relative;
+	padding: 0 11px;
+	position: relative
+}
+
+#nav2 .left ul li.home {
+	padding-left: 30px;
+	background: url(https://www.visitbusan.net/images/sub/home.jpg) 0px
+		center no-repeat;
+}
+
+#nav2 .left ul li:after {
+	content: '';
+	display: block;
+	background: url(https://www.visitbusan.net/images/sub/homenav.jpg)
+		no-repeat;
+	top: 22px;
+	right: -7px;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+}
+
+#nav2 .left ul li a {
+	color: #545454;
+	font-weight: 700
+}
+
+#nav2 .left ul li.depth2 {
+	color: black;
+	font-weight: 700;
+}
+
+#nav2 .left ul li.depth2 a {
+	color: black
+}
+
+#nav2 .left ul li.depth2:after {
+	display: none
+}
+/*nav2 end*/
 .outer {
 	position: relative;
 	background: url(https://visitbusan.net/images/sub/subvisu-01.jpg);

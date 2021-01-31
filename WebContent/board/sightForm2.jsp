@@ -10,6 +10,10 @@
 	crossorigin="anonymous">
 
 <style>
+
+
+
+}
 .card-box:hover {
 	transform: translateY(-40px);
 }
@@ -43,8 +47,18 @@
 	</div>
 </div>
 
+<section id="nav2">
+	<div class="navInner boxing2">
+		<div class="left">
+			<ul style="list-style: none;">
+				<li class="home"><a href="<%=request.getContextPath()%>/board?cmd=main&page=0" title="부산에가면으로 갑니다">부산에가면</a></li>
+				<li class="depth2"><a href="<%=request.getContextPath()%>/board?cmd=sightForm2&page=0" title="명소으로 갑니다">명소</a></li>
+			</ul>
+		</div>
 
-<br />
+	</div>
+</section>
+
 
 
 <div class="container">
@@ -81,7 +95,10 @@
 <!-- 검색 바 end -->
 
 <div align="right" style="margin-right: 80px">
-	<a href="" class="text-dark">조회순</a> <a href="" class="text-dark">리뷰순</a>
+	<a href="<%=request.getContextPath()%>/board?cmd=sightForm2&page=0"
+		class="text-dark">조회순</a> <a
+		href="<%=request.getContextPath()%>/board?cmd=sightForm2ByReview&page=0"
+		class="text-dark">리뷰순</a>
 </div>
 
 <hr>
