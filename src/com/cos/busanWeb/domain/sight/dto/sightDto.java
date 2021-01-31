@@ -15,4 +15,6 @@ public class sightDto {
 	private String subTitle;
 	private String mainImg;
 	private int readCount;
+	private int likeCount;
+	private int reviewCount;
 }
