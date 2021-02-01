@@ -1,3 +1,5 @@
+package com.cos.busanWeb.config;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,10 +9,10 @@ import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Iterator;
 import java.util.List;
 
-import com.cos.busanWeb.config.DB;
 import com.cos.busanWeb.domain.sight.Item;
 import com.cos.busanWeb.domain.sight.SightResponseDto;
 import com.google.gson.Gson;
@@ -26,9 +28,9 @@ public class SightInsertDB {
 																														 * Key
 																														 */
 		urlBuilder.append(
-				"&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode(""+n, "UTF-8")); /* ��������ȣ */
+				"&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("" + n, "UTF-8")); /* ��������ȣ */
 		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "="
-				+ URLEncoder.encode(""+n2, "UTF-8")); /* �� ������ ��� �� */
+				+ URLEncoder.encode("" + n2, "UTF-8")); /* �� ������ ��� �� */
 		urlBuilder.append("&" + URLEncoder.encode("resultType", "UTF-8") + "="
 				+ URLEncoder.encode("json", "UTF-8")); /* JSON������� ȣ�� �� �Ķ���� resultType=json �Է� */
 
@@ -43,7 +45,6 @@ public class SightInsertDB {
 				sb.append(input);
 			}
 
-
 			Gson gson = new Gson();
 			SightResponseDto dto = gson.fromJson(sb.toString(), SightResponseDto.class);
 
@@ -57,40 +58,63 @@ public class SightInsertDB {
 		return null;
 
 	}
+
 	public Connection getconn() {
 		Connection conn = null;
-		
-		String url="jdbc:mysql://localhost:3306/visitdb?serverTimezone=Asia/Seoul";
+
+		String url = "jdbc:mysql://localhost:3306/visitdb?serverTimezone=Asia/Seoul";
 		String username = "visituser";
 		String password = "bitc5600";
-		
+
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection(url,username, password);
+			conn = DriverManager.getConnection(url, username, password);
 			System.out.println("연결성공");
-			
+
 			return conn;
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		
+
 		System.out.println("연결 실패");
 		return null;
 	}
-	
-	public static void main(String[] args) {
-		
-		SightInsertDB db = new SightInsertDB();
 
-			List<Item> items = null;
+	public int countAll() {
+		String sql = "SELECT count(*) from sight ";
+		Connection conn = getconn();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+
+			// if(rs.next){return rs.getInt(1); => 개수 뽑아내기}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally { // 무조건 실행
+			DB.close(conn, pstmt);
+		}
+		return -1;
+	}
+
+	public void db저장() {
+		List<Item> items = null;
+		if (countAll() == 0) {
 			try {
-				items = db.뿌리기(1, 112);
-				for (int i = 0; i<items.size(); i++) {
-					
+				items = 뿌리기(1, 112);
+				for (int i = 0; i < items.size(); i++) {
+
 					String sql = "INSERT INTO sight(id,title,subtitle,mainimg, sightlat, sightlng) VALUES(?,?,?,?,?,?) ";
-					Connection conn = db.getconn();
+					Connection conn = getconn();
 					PreparedStatement pstmt = null;
-					
+
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setInt(1, items.get(i).getUCSEQ());
 					pstmt.setString(2, items.get(i).getMAINTITLE());
@@ -98,7 +122,7 @@ public class SightInsertDB {
 					pstmt.setString(4, items.get(i).getMAINIMGNORMAL());
 					pstmt.setDouble(5, items.get(i).getLAT());
 					pstmt.setDouble(6, items.get(i).getLNG());
-					
+
 					int result = pstmt.executeUpdate();
 					System.out.println(result);
 					System.out.println("DB완료");
@@ -107,7 +131,9 @@ public class SightInsertDB {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	
-
+		}else{
+			System.out.println("이미존재");
+		}
 	}
+	
 }

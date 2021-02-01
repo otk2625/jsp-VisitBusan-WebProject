@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cos.busanWeb.config.SightInsertDB;
 import com.cos.busanWeb.domain.CommonRespDto;
 import com.cos.busanWeb.domain.review.dto.ReviewCountRepDto;
 import com.cos.busanWeb.domain.review.dto.ReviewDto;
@@ -27,8 +28,9 @@ import com.google.gson.Gson;
 @WebServlet("/board")
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	SightInsertDB sightInsert = new SightInsertDB();
 	public BoardController() {
+		
 		super();
 	}
 
@@ -46,7 +48,7 @@ public class BoardController extends HttpServlet {
 			throws ServletException, IOException {
 		String cmd = request.getParameter("cmd");
 		System.out.println(cmd);
-		
+		sightInsert.db저장();
 		BoardService boardService = new BoardService();
 		ReviewService reviewService = new ReviewService();
 		
